@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      navigatorObservers: [
+       
+      ],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -99,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${MediaQuery.of(context).size.width}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
