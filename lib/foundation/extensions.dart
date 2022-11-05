@@ -6,7 +6,7 @@ extension ResponsiveUtil on BuildContext {
   Size get size => MediaQuery.of(this).size;
 
   /// Return breakpoints value
-  BreakPoint? get breakpoint => BreakPoint.of(this);
+  BambooBreakPoint? get breakpoint =>  BambooBreakPoint.of(this);
 
   /// Return orientation
   Orientation get orientation => MediaQuery.of(this).orientation;

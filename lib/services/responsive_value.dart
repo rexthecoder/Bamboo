@@ -19,7 +19,7 @@ class ResponsiveValue<T> {
   final T? desktop;
   final Unit unit;
 
-  final ContextObserver _observer = ContextObserver();
+  final BambooObserver _observer = BambooObserver();
 
   /// Return a responsive value based on the type
   /// ```dart

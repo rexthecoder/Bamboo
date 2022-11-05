@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Allow us to get the currenct context using observers
-class ContextObserver extends NavigatorObserver {
+class BambooObserver extends NavigatorObserver {
   /// The current context
   BuildContext? get context => _context;
   BuildContext? _context;
@@ -27,7 +27,7 @@ enum Unit { p, vmin, vmax, vw, vh, px }
 
 extension ViewPointUnit on num {
   /// Return the current context
-  BuildContext get context => ContextObserver()._context!;
+  BuildContext get context => BambooObserver()._context!;
 
   /// Return the current size
   Size get size => MediaQuery.of(context).size;
