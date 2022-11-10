@@ -107,6 +107,7 @@ class Bamboo<T> {
     return value!;
   }
 
+ ///  ALlow us to pass only num values for a proper conversion
   dynamic _unitConversion(Unit unitValue, num value) {
     if (unitValue == Unit.p) {
       return value.p;
@@ -142,5 +143,3 @@ T responsiveValue<T>({
     unit: relativeUnit,
   ).adaptive;
 }
-
-/// Get the current context in flutter
