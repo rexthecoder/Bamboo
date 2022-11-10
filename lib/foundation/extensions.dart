@@ -6,7 +6,7 @@ extension ResponsiveUtil on BuildContext {
   Size get size => MediaQuery.of(this).size;
 
   /// Return breakpoints value
-  BambooBreakPoint? get breakpoint =>  BambooBreakPoint.of(this);
+  BambooBreakPoint? get breakpoint => BambooBreakPoint.of(this);
 
   /// Return orientation
   Orientation get orientation => MediaQuery.of(this).orientation;
@@ -17,18 +17,22 @@ extension ResponsiveUtil on BuildContext {
   /// Check if screen is landscape
   bool get isLandscape => orientation == Orientation.landscape;
 
-  /// Check if screen is mobile
-  bool get isMobile => width < breakpoint!.mobile;
+  /// Check if screen is mobile using breakpoint both landscape and portrait
+  bool get isMobile => width <= breakpoint!.mobile;
 
   /// Check if screen is tablet
-  bool get isTablet => width >=  breakpoint!.mobile && width <  breakpoint!.tablet;
+  bool get isTablet =>
+      breakpoint!.mobile < width && width <= breakpoint!.tablet;
 
   /// Check if screen is desktop
-  bool get isDesktop => width >= breakpoint!.tablet && width <breakpoint!.desktop;
+  bool get isDesktop => breakpoint!.tablet < width && width <= breakpoint!.desktop;
+
+  /// Extra large
+  bool get isLarge => breakpoint!.desktop < width; 
 
   /// Return width based on orietation
-  double get width => isPortrait ? size.width : size.height;
+  double get width => MediaQuery.of(this).size.width;
 
   /// Return height based on orietation
-  double get height => isPortrait ? size.height : size.width;
+  double get height => MediaQuery.of(this).size.height;
 }

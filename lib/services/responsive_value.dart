@@ -11,27 +11,24 @@ class ResponsiveValue<T> {
     required this.mobile,
     this.tablet,
     this.desktop,
+    this.large,
+    required this.context,
     this.unit = Unit.p,
   });
 
   final T mobile;
   final T? tablet;
   final T? desktop;
+  final T? large;
   final Unit unit;
-
-  final BambooObserver _observer = BambooObserver();
+  final BuildContext context;
 
   /// Return a responsive value based on the type
   /// ```dart
   /// ResponsiveValue(mobile: 20).value(context)
   /// ```
   T get value {
-    if (_observer.context == null) {
-      throw FlutterError('Kindly pass the Bamboo Observer to the Navigator');
-    }
-    final context = _observer.context!;
-
-    /// Return a value based on the viewpot unit if the value is a type of num
+    // final context =BuildContext()!;
 
     if (context.isMobile) {
       return _getValue(mobile);
@@ -40,7 +37,7 @@ class ResponsiveValue<T> {
     } else if (context.isDesktop) {
       return _getValue(desktop) ?? _getValue(mobile);
     } else {
-      throw FlutterError('Responsive value not found');
+      return _getValue(mobile);
     }
   }
 
@@ -73,6 +70,7 @@ class ResponsiveValue<T> {
 }
 
 T responsiveValue<T>({
+  required BuildContext context,
   required T mobile,
   T? tablet,
   T? desktop,
@@ -81,7 +79,12 @@ T responsiveValue<T>({
   return ResponsiveValue<T>(
     mobile: mobile,
     tablet: tablet,
+    context: context,
     desktop: desktop,
     unit: relativeUnit,
   ).value;
 }
+
+
+/// Get the current context in flutter 
+

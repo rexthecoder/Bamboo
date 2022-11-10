@@ -1,21 +1,6 @@
-import 'package:flutter/material.dart';
 
-/// Allow us to get the currenct context using observers
-class BambooObserver extends NavigatorObserver {
-  /// The current context
-  BuildContext? get context => _context;
-  BuildContext? _context;
 
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    _context = route.navigator?.context;
-  }
-
-  @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    _context = previousRoute?.navigator?.context;
-  }
-}
+import 'package:flutter/animation.dart';
 
 /// Calculate the num and return it responsive value base on unit
 /// ```dart
@@ -27,10 +12,10 @@ enum Unit { p, vmin, vmax, vw, vh, px }
 
 extension ViewPointUnit on num {
   /// Return the current context
-  BuildContext get context => BambooObserver()._context!;
+
 
   /// Return the current size
-  Size get size => MediaQuery.of(context).size;
+  Size get size => const Size(200, 100);
 
   /// Return vmin
   num get vmin => this / 100.0 * (size.shortestSide);
@@ -50,3 +35,4 @@ extension ViewPointUnit on num {
   /// Returen px
   num get px => this;
 }
+

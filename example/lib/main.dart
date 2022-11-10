@@ -13,14 +13,17 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BambooBreakPoint(
+      
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        // showPerformanceOverlay: true,
         title: 'Flutter Demo',
-        navigatorObservers: [BambooObserver()],
+        home:const FoundationWidget(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const FoundationWidget(),
       ),
     );
   }
 }
+
