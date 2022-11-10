@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:bamboo/foundation/extensions.dart';
 
 ///Widget that returns a responsive value based on the assign type
-class ResponsiveWidget<T> extends StatelessWidget {
-  const ResponsiveWidget({
+class BambooWidget<T> extends StatelessWidget {
+  const BambooWidget({
     super.key,
     required this.mobile,
     this.tablet,
     this.desktop,
-    this.laptop,
+    this.large,
   });
 
   final Widget mobile;
   final Widget? tablet;
   final Widget? desktop;
-  final Widget? laptop;
+  final Widget? large;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,10 @@ class ResponsiveWidget<T> extends StatelessWidget {
       return tablet ?? mobile;
     } else if (context.isDesktop) {
       return desktop ?? mobile;
+    } else if (context.isLarge) {
+      return desktop ?? mobile;
     } else {
-      throw Exception('Responsive value not found');
+      throw FlutterError('Responsive value not found');
     }
   }
 }
