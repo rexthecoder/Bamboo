@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 /// ```dart
 /// Responsive(mobile: 20)
 /// ```
-class BamboomResponsive<T> {
-  BamboomResponsive({
+class Bamboo<T> {
+  Bamboo({
     required this.mobile,
     this.tablet,
     this.desktop,
@@ -27,7 +27,7 @@ class BamboomResponsive<T> {
   /// based on the current breakpoint
   /// {@tool snippet}
   ///
-  /// Here are some examples of how to create [BamboomResponsive.value] instances:
+  /// Here are some examples of how to create [Bamboo.value] instances:
   ///
   /// Mostly, you may need to pass only mobile and large:
   ///
@@ -53,7 +53,7 @@ class BamboomResponsive<T> {
     T? desktop,
     T? large,
   }) {
-    return BamboomResponsive<T>(
+    return Bamboo<T>(
       mobile: mobile,
       tablet: tablet,
       desktop: desktop,
@@ -72,7 +72,7 @@ class BamboomResponsive<T> {
     num? large,
     Unit unit = Unit.px,
   }) {
-    return BamboomResponsive<num>(
+    return Bamboo<num>(
       mobile: mobile,
       tablet: tablet,
       desktop: desktop,
@@ -125,7 +125,7 @@ T responsiveValue<T>({
   T? desktop,
   Unit relativeUnit = Unit.p,
 }) {
-  return BamboomResponsive<T>(
+  return Bamboo<T>(
     mobile: mobile,
     tablet: tablet,
     context: context,

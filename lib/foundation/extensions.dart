@@ -36,3 +36,16 @@ extension ResponsiveUtil on BuildContext {
   /// Return height based on orietation
   double get height => MediaQuery.of(this).size.height;
 }
+
+
+/// Check the current theme mode of the application.
+extension ModeExtension on BuildContext {
+  /// Returns the current platform brightness of the application.
+  Brightness get mode => MediaQuery.of(this).platformBrightness;
+
+  /// Returns true if the current theme mode is dark.
+  bool get isDark => mode == Brightness.dark;
+
+  /// Returns true if the current theme mode is light.
+  bool get isLight => mode == Brightness.light;
+}

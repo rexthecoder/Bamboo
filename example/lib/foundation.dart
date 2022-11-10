@@ -27,15 +27,20 @@ class FoundationWidget extends StatelessWidget {
               Text("Tablet ${context.isTablet}"),
               Text("Desktop ${context.isDesktop}"),
               Text("Large ${context.isLarge}"),
+              Text("Orientation ${context.orientation}"),
               SizedBox(
-                height: BamboomResponsive.number(
+                key: Mode.only(
+                  light: ValueKey('value'),
+                  dark: ValueKey('value'),
+                ),
+                height: Bamboo.number(
                   context: context,
                   mobile: 20,
                   unit: Unit.p,
                 ),
                 width: 200,
                 child: Card(
-                  child: BamboomResponsive.value(
+                  child: Bamboo.value(
                     context: context,
                     mobile: Container(),
                   ),
