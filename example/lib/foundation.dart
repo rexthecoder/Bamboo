@@ -29,6 +29,18 @@ class FoundationWidget extends StatelessWidget {
               Text("Desktop ${context.isDesktop}"),
               Text("Large ${context.isLarge}"),
               Text("Orientation ${context.orientation}"),
+              BambooWidget(
+                mobile: Container(
+                  height: 200,
+                  width: 200,
+                  color: Colors.white,
+                ),
+                desktop: Container(
+                  height: 200,
+                  width: 200,
+                  color: Colors.red,
+                ),
+              ),
               SizedBox(
                 key: Mode.only(
                   context: context,
