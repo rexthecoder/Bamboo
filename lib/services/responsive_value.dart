@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 /// ```dart
 /// Responsive(mobile: 20)
 /// ```
-class ResponsiveValue<T> {
-  ResponsiveValue({
+class BamboomResponsive<T> {
+  BamboomResponsive({
     required this.mobile,
     this.tablet,
     this.desktop,
@@ -23,52 +23,101 @@ class ResponsiveValue<T> {
   final Unit unit;
   final BuildContext context;
 
+  /// Adatively provides the assign type with the correct element
+  /// based on the current breakpoint
+  /// {@tool snippet}
+  ///
+  /// Here are some examples of how to create [BamboomResponsive.value] instances:
+  ///
+  /// Mostly, you may need to pass only mobile and large:
+  ///
+  /// ```dart
+  /// BamboomResponsive.value(
+  ///    context: context,
+  ///    mobile: Colors.amberAccent,
+  ///    desktop: Colors.pink,
+  ///    tablet: Colors.black,
+  ///  )
+  /// ```
+  /// {@end-tool}
+  /// {@tool snippet}
+  /// If any of the value non-required value is set to null
+  /// it will take the mobile breakpoint as default
+  /// See also:
+  ///
+  ///  * [number], a method which allow set adative [num] values.
+  static T value<T>({
+    required BuildContext context,
+    required T mobile,
+    T? tablet,
+    T? desktop,
+    T? large,
+  }) {
+    return BamboomResponsive<T>(
+      mobile: mobile,
+      tablet: tablet,
+      desktop: desktop,
+      context: context,
+    ).adaptive;
+  }
+
+  /// Adaptively provides the number based on type with proper unit assign to it
+  /// By default the [Unit] objects is just pixel
+  /// [Unit] available API are [Unit.p], [Unit.px], [Unit.vh], [Unit.vmax], [Unit.vmin], [Unit.vw]
+  static num number<num>({
+    required BuildContext context,
+    required num mobile,
+    num? tablet,
+    num? desktop,
+    num? large,
+    Unit unit = Unit.px,
+  }) {
+    return BamboomResponsive<num>(
+      mobile: mobile,
+      tablet: tablet,
+      desktop: desktop,
+      context: context,
+      unit: unit,
+    ).adaptive;
+  }
+
   /// Return a responsive value based on the type
   /// ```dart
   /// ResponsiveValue(mobile: 20).value(context)
   /// ```
-  T get value {
-    // final context =BuildContext()!;
-
+  T get adaptive {
     if (context.isMobile) {
-      return _getValue(mobile);
+      return _convertUnit(mobile, unit);
     } else if (context.isTablet) {
-      return _getValue(tablet) ?? _getValue(mobile);
+      return _convertUnit(tablet, unit) ?? _convertUnit(mobile, unit);
     } else if (context.isDesktop) {
-      return _getValue(desktop) ?? _getValue(mobile);
+      return _convertUnit(desktop, unit) ?? _convertUnit(mobile, unit);
     } else {
-      return _getValue(mobile);
+      return _convertUnit(mobile, unit);
     }
   }
 
-  _getValue(value) {
-    /// if a value is equal to num then it shouw return a value base on the unit assigned
-    /// example if Unit == Unit.p then it should return value of percentage
-    /// final value = Responsive(unit: Unit.p, mobile: 10) // 100
-    /// final value = Responsive(unit: Unit.p, mobile: 10) // 10
-    if (T == num) {
-      switch (unit) {
-        case Unit.p:
-          return value.p;
-        case Unit.vw:
-          return value.vw;
-        case Unit.vh:
-          return value.vh;
-        case Unit.vmin:
-          return value.vmin;
-        case Unit.vmax:
-          return value.vmax;
-        case Unit.px:
-          return value;
-        default:
-          return value;
-      }
+  /// Converting the given value to the appropriate unit
+  T _convertUnit(value, Unit unitValue) {
+    if (unitValue == Unit.p) {
+      return value.p;
+    } else if (unitValue == Unit.vw) {
+      return value.vw;
+    } else if (unitValue == Unit.vh) {
+      return value.vh;
+    } else if (unitValue == Unit.vmin) {
+      return value.vmin;
+    } else if (unitValue == Unit.vmax) {
+      return value.vmax;
+    } else if (unitValue == Unit.nan) {
+      return value;
     } else {
       return value;
     }
   }
 }
 
+@Deprecated("You can use BamboonResponsive.value instead")
 T responsiveValue<T>({
   required BuildContext context,
   required T mobile,
@@ -76,15 +125,13 @@ T responsiveValue<T>({
   T? desktop,
   Unit relativeUnit = Unit.p,
 }) {
-  return ResponsiveValue<T>(
+  return BamboomResponsive<T>(
     mobile: mobile,
     tablet: tablet,
     context: context,
     desktop: desktop,
     unit: relativeUnit,
-  ).value;
+  ).adaptive;
 }
 
-
-/// Get the current context in flutter 
-
+/// Get the current context in flutter

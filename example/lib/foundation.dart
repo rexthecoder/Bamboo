@@ -28,14 +28,16 @@ class FoundationWidget extends StatelessWidget {
               Text("Desktop ${context.isDesktop}"),
               Text("Large ${context.isLarge}"),
               SizedBox(
-                height: 200,
+                height: BamboomResponsive.number(
+                  context: context,
+                  mobile: 20,
+                  unit: Unit.p,
+                ),
                 width: 200,
                 child: Card(
-                  color: responsiveValue(
+                  child: BamboomResponsive.value(
                     context: context,
-                    mobile: Colors.amberAccent,
-                    desktop: Colors.pink,
-                    tablet: Colors.black,
+                    mobile: Container(),
                   ),
                 ),
               )

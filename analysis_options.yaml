@@ -2,3 +2,16 @@ include: package:flutter_lints/flutter.yaml
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    - always_declare_return_types
+    - cancel_subscriptions
+    - close_sinks
+    - comment_references
+    - one_member_abstracts
+    - only_throw_errors
+    - package_api_docs
+    - prefer_final_in_for_each
+    - prefer_single_quotes
+    - slash_for_doc_comments
+    - test_types_in_equals

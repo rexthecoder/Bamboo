@@ -6,7 +6,7 @@ import 'package:flutter/animation.dart';
 /// ```dart
 /// final value = 100.p /// 100%
 /// final value = 100.px /// 100px
-enum Unit { p, vmin, vmax, vw, vh, px }
+enum Unit { p, vmin, vmax, vw, vh, px, nan }
 
 /// CSS viewport unit from MediaQuerry
 
