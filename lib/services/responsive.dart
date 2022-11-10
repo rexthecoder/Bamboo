@@ -102,12 +102,12 @@ class Bamboo<T> {
     ViewPointUnit.initContext(context);
     //  print(value is num);
     if (value is num) {
-      return newMethod(unitValue, value);
+      return _unitConversion(unitValue, value);
     }
     return value!;
   }
 
-  newMethod(Unit unitValue, num value) {
+  dynamic _unitConversion(Unit unitValue, num value) {
     if (unitValue == Unit.p) {
       return value.p;
     } else if (unitValue == Unit.vw) {
@@ -115,10 +115,8 @@ class Bamboo<T> {
     } else if (unitValue == Unit.vh) {
       return value.vh;
     } else if (unitValue == Unit.vmin) {
-       print(value.vmin);
       return value.vmin;
     } else if (unitValue == Unit.vmax) {
-      print(value.vmax);
       return value.vmax;
     } else if (unitValue == Unit.nan) {
       return value;
@@ -128,7 +126,7 @@ class Bamboo<T> {
   }
 }
 
-@Deprecated("You can use BamboonResponsive.value instead")
+@Deprecated('You can use BamboonResponsive.value instead')
 T responsiveValue<T>({
   required BuildContext context,
   required T mobile,

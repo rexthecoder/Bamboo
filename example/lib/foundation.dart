@@ -37,12 +37,12 @@ class FoundationWidget extends StatelessWidget {
                 ),
                 height: Bamboo.number(
                   context: context,
-                  mobile: 20,
+                  mobile: 3,
                   unit: Unit.p,
                 ),
                 width: Bamboo.number(
                   context: context,
-                  mobile: 40,
+                  mobile: 7.5,
                   unit: Unit.vh,
                 ),
                 child: Card(
