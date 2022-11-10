@@ -13,6 +13,7 @@ class FoundationWidget extends StatelessWidget {
       body: SafeArea(
         child: Container(
           width: double.infinity,
+          height: MediaQuery.of(context).size.height,
           margin: EdgeInsets.all(20),
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -30,6 +31,7 @@ class FoundationWidget extends StatelessWidget {
               Text("Orientation ${context.orientation}"),
               SizedBox(
                 key: Mode.only(
+                  context: context,
                   light: ValueKey('value'),
                   dark: ValueKey('value'),
                 ),
@@ -38,12 +40,13 @@ class FoundationWidget extends StatelessWidget {
                   mobile: 20,
                   unit: Unit.p,
                 ),
-                width: 200,
+                width: Bamboo.number(
+                  context: context,
+                  mobile: 40,
+                  unit: Unit.vh,
+                ),
                 child: Card(
-                  child: Bamboo.value(
-                    context: context,
-                    mobile: Container(),
-                  ),
+                  child: Container(),
                 ),
               )
             ],

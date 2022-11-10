@@ -89,16 +89,25 @@ class Bamboo<T> {
     if (context.isMobile) {
       return _convertUnit(mobile, unit);
     } else if (context.isTablet) {
-      return _convertUnit(tablet, unit) ?? _convertUnit(mobile, unit);
+      return _convertUnit(tablet ?? mobile, unit);
     } else if (context.isDesktop) {
-      return _convertUnit(desktop, unit) ?? _convertUnit(mobile, unit);
+      return _convertUnit(desktop ?? mobile, unit);
     } else {
       return _convertUnit(mobile, unit);
     }
   }
 
   /// Converting the given value to the appropriate unit
-  T _convertUnit(value, Unit unitValue) {
+  T _convertUnit(T value, Unit unitValue) {
+    ViewPointUnit.initContext(context);
+    //  print(value is num);
+    if (value is num) {
+      return newMethod(unitValue, value);
+    }
+    return value!;
+  }
+
+  newMethod(Unit unitValue, num value) {
     if (unitValue == Unit.p) {
       return value.p;
     } else if (unitValue == Unit.vw) {
@@ -106,8 +115,10 @@ class Bamboo<T> {
     } else if (unitValue == Unit.vh) {
       return value.vh;
     } else if (unitValue == Unit.vmin) {
+       print(value.vmin);
       return value.vmin;
     } else if (unitValue == Unit.vmax) {
+      print(value.vmax);
       return value.vmax;
     } else if (unitValue == Unit.nan) {
       return value;

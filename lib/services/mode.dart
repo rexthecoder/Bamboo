@@ -25,23 +25,23 @@ class Mode<T> {
   /// );
   /// ```
   static T only<T>({
-    BuildContext? context,
+    required BuildContext context,
     required T light,
     required T? dark,
   }) {
     return Mode<T>(
-      context: context!,
+      context: context,
       light: light,
       dark: dark,
     ).value;
   }
 
   static T all<T>({
-    BuildContext? context,
+    required BuildContext context,
     required T value,
   }) {
     return Mode<T>(
-      context: context!,
+      context: context,
       light: value,
       dark: value,
     ).value;
