@@ -1,2 +1,2 @@
 export 'responsive.dart';
-export 'Orientation.dart';
+export 'bamboo_orientation.dart';

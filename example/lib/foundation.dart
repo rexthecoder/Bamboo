@@ -1,5 +1,4 @@
 import 'package:bamboo/bamboo.dart';
-import 'package:bamboo/foundation/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FoundationWidget extends StatelessWidget {
