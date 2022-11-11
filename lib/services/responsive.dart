@@ -107,7 +107,7 @@ class Bamboo<T> {
     return value!;
   }
 
- ///  ALlow us to pass only num values for a proper conversion
+  ///  ALlow us to pass only num values for a proper conversion
   dynamic _unitConversion(Unit unitValue, num value) {
     if (unitValue == Unit.p) {
       return value.p;
@@ -123,6 +123,21 @@ class Bamboo<T> {
       return value;
     } else {
       return value;
+    }
+  }
+
+  /// Allow us to set a property based on the orientation
+  static T orientation<T>({
+    required BuildContext context,
+    required portrait,
+    required landscape,
+  }) {
+    if (context.isPortrait) {
+      return portrait;
+    } else if (context.isLandscape) {
+      return landscape;
+    } else {
+      return portrait;
     }
   }
 }

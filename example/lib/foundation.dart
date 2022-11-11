@@ -14,7 +14,7 @@ class FoundationWidget extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
             color: Color(0xff95D9FF),
@@ -29,24 +29,32 @@ class FoundationWidget extends StatelessWidget {
               Text("Desktop ${context.isDesktop}"),
               Text("Large ${context.isLarge}"),
               Text("Orientation ${context.orientation}"),
-              BambooWidget(
-                mobile: Container(
+              // BambooWidget(
+              //   mobile: Container(
+              //     height: 200,
+              //     width: 200,
+              //     color: Colors.white,
+              //   ),
+              //   desktop: Container(
+              //     height: 200,
+              //     width: 200,
+              //     color: Colors.red,
+              //   ),
+              // ),
+
+              BamboonOrientation(
+                portrait: Container(
                   height: 200,
                   width: 200,
                   color: Colors.white,
                 ),
-                desktop: Container(
+                landscape: Container(
                   height: 200,
                   width: 200,
                   color: Colors.red,
                 ),
               ),
               SizedBox(
-                key: Mode.only(
-                  context: context,
-                  light: ValueKey('value'),
-                  dark: ValueKey('value'),
-                ),
                 height: Bamboo.number(
                   context: context,
                   mobile: 3,
@@ -55,7 +63,6 @@ class FoundationWidget extends StatelessWidget {
                 width: Bamboo.number(
                   context: context,
                   mobile: 7.5,
-                  unit: Unit.vh,
                 ),
                 child: Card(
                   child: Container(),
