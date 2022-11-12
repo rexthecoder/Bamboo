@@ -8,6 +8,7 @@ class FoundationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final bambooBreakPoint = BambooBreakPoint.of(context);
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
@@ -53,20 +54,22 @@ class FoundationWidget extends StatelessWidget {
                   color: Colors.red,
                 ),
               ),
-              SizedBox(
-                height: Bamboo.number(
-                  context: context,
-                  mobile: 3,
-                  unit: Unit.p,
-                ),
-                width: Bamboo.number(
-                  context: context,
-                  mobile: 7.5,
-                ),
-                child: Card(
-                  child: Container(),
-                ),
-              )
+              // SizedBox(
+              //   height: Bamboo.number(
+              //     context: context,
+              //     mobile: 3,
+              //     desktop: 40,
+              //     tablet: 50,
+              //     unit: Unit.vmax,
+              //   ),
+              //   width: Bamboo.number(
+              //     context: context,
+              //     mobile: 7.5,
+              //   ),
+              //   child: Card(
+              //     child: Container(),
+              //   ),
+              // )
             ],
           ),
         ),

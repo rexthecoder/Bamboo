@@ -1,4 +1,5 @@
 import 'package:bamboo/bamboo.dart';
+import 'package:example/example/minimal/minimal.dart';
 import 'package:example/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +17,10 @@ class App extends StatelessWidget {
       
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
         // showPerformanceOverlay: true,
         title: 'Flutter Demo',
-        home:const FoundationWidget(),
+        home:const MinimalWebsite(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
