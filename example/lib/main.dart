@@ -1,6 +1,7 @@
 import 'package:bamboo/bamboo.dart';
 import 'package:example/example/minimal/minimal.dart';
 import 'package:example/foundation.dart';
+import 'package:example/hello.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,13 +15,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BambooBreakPoint(
-      
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.light,
         // showPerformanceOverlay: true,
         title: 'Flutter Demo',
-        home:const MinimalWebsite(),
+        home: AutoScaling(baseWidth: 375,
+        child: const MinimalWebsite()),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -28,4 +29,3 @@ class App extends StatelessWidget {
     );
   }
 }
-

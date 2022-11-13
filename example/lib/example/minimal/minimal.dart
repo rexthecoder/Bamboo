@@ -1,10 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bamboo/bamboo.dart';
-import 'package:bamboo/widgets/hidden.dart';
 import 'package:example/example/template/colors.dart';
 import 'package:example/example/template/expanded_icon.dart';
 import 'package:example/example/template/helpers.dart';
 import 'package:example/example/template/styles.dart';
-import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -22,6 +21,7 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
     return Scaffold(
       backgroundColor: const Color(0xff10172A),
       body: SafeArea(
+        bottom: false,
         child: NotificationListener<ScrollNotification>(
           onNotification: (notification) {
             if (notification is ScrollStartNotification) {
@@ -38,12 +38,12 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
               horizontal: Bamboo.number(
                 context: context,
                 mobile: 2,
-                desktop: 24,
-                tablet: 18,
-                large: 24,
-                unit: Unit.vmax,
+                desktop: 20,
+                tablet: 2,
+                large: 2,
+                unit: Unit.vw,
               ),
-              vertical: 16,
+              // vertical: 16,
             ),
             child: Column(
               children: [
@@ -53,7 +53,7 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                        const AutoSizeText(
                           'MINIMAL',
                           style: TextStyles.header,
                         ),
@@ -150,7 +150,7 @@ class PostCards extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        const Text(
+        const AutoSizeText(
           "A BETTER BLOG FOR WRITING",
           style: TextStyles.subHeader,
         ),
@@ -160,6 +160,7 @@ class PostCards extends StatelessWidget {
         const Text(
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text",
           style: TextStyles.body,
+          
         ),
         const SizedBox(
           height: 24,
@@ -167,7 +168,7 @@ class PostCards extends StatelessWidget {
         OutlinedButton(
           style: outlineButtonStyle,
           onPressed: () {},
-          child: const Text('READ MORE'),
+          child: const AutoSizeText('READ MORE'),
         ),
         const SizedBox(
           height: 24,
