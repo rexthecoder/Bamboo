@@ -23,7 +23,7 @@ extension ViewPointUnit on num {
   num get vmin => this / 100.0 * (size.shortestSide);
 
   /// vmax - percent of largest between width or height of viewport
-  num get vmax => this / 100.0 * (size.longestSide);
+  num get vmax => this / 100.0 * size.longestSide;
 
   /// vw  - percent of viewport width
   num get vw => this / 100.0 * (size.width);

@@ -20,8 +20,7 @@ class App extends StatelessWidget {
         themeMode: ThemeMode.light,
         // showPerformanceOverlay: true,
         title: 'Flutter Demo',
-        home: AutoScaling(baseWidth: 375,
-        child: const MinimalWebsite()),
+        home: const MinimalWebsite(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

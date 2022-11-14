@@ -5,7 +5,6 @@ import 'package:example/example/template/expanded_icon.dart';
 import 'package:example/example/template/helpers.dart';
 import 'package:example/example/template/styles.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class MinimalWebsite extends StatefulWidget {
   const MinimalWebsite({super.key});
@@ -21,6 +20,7 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
     return Scaffold(
       backgroundColor: const Color(0xff10172A),
       body: SafeArea(
+        top: true,
         bottom: false,
         child: NotificationListener<ScrollNotification>(
           onNotification: (notification) {
@@ -38,16 +38,18 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
               horizontal: Bamboo.number(
                 context: context,
                 mobile: 2,
-                desktop: 20,
+                desktop: 5,
                 tablet: 2,
                 large: 2,
-                unit: Unit.vw,
+                unit: Unit.vmax,
               ),
               // vertical: 16,
             ),
             child: Column(
               children: [
+                const SizedBox(height: 10,),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,6 +99,7 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
                 ),
                 Expanded(
                   child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(
                       vertical: 20,
                     ),
