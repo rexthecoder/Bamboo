@@ -33,22 +33,20 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
             }
             return true;
           },
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Bamboo.number(
-                context: context,
-                mobile: 2,
-                desktop: 5,
-                tablet: 2,
-                large: 2,
-                unit: Unit.vmax,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
               ),
-              // vertical: 16,
-            ),
-            child: Column(
-              children: [
-                const SizedBox(height: 10,),
-                Column(
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Bamboo.number(
+                  context: context,
+                  mobile: 2,
+                  desktop: 10,
+                  unit: Unit.vmax,
+                )),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
@@ -94,27 +92,35 @@ class _MinimalWebsiteState extends State<MinimalWebsite> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: Bamboo.number(
+                      context: context,
+                      mobile: 2,
+                      desktop: 19,
+                      tablet: 2,
+                      large: 2,
+                      unit: Unit.vmax,
                     ),
-                    itemCount: images.length,
-                    itemBuilder: (context, index) {
-                      return PostCards(
-                        index: index,
-                        imagePath: images[index],
-                      );
-                    },
                   ),
+                  itemCount: images.length,
+                  itemBuilder: (context, index) {
+                    return PostCards(
+                      index: index,
+                      imagePath: images[index],
+                    );
+                  },
                 ),
-              ],
-              // children: [const PostCards()],
-            ),
+              ),
+            ],
+            // children: [const PostCards()],
           ),
         ),
       ),
@@ -163,7 +169,6 @@ class PostCards extends StatelessWidget {
         const Text(
           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text",
           style: TextStyles.body,
-          
         ),
         const SizedBox(
           height: 24,

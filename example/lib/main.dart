@@ -1,7 +1,5 @@
 import 'package:bamboo/bamboo.dart';
-import 'package:example/example/minimal/minimal.dart';
-import 'package:example/foundation.dart';
-import 'package:example/hello.dart';
+import 'package:example/example/minimal/minimal.dart' deferred as box;
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,11 +18,33 @@ class App extends StatelessWidget {
         themeMode: ThemeMode.light,
         // showPerformanceOverlay: true,
         title: 'Flutter Demo',
-        home: const MinimalWebsite(),
+        home: const MainPage(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
       ),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<void>(
+      future: box.loadLibrary(),
+      builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+          return box.MinimalWebsite();
+        }
+        return const CircularProgressIndicator(
+          color: Colors.red,
+        );
+      },
     );
   }
 }

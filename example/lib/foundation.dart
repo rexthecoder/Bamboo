@@ -1,4 +1,5 @@
 import 'package:bamboo/bamboo.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class FoundationWidget extends StatelessWidget {
@@ -7,77 +8,49 @@ class FoundationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bambooBreakPoint = BambooBreakPoint.of(context);
-    return LayoutBuilder(
-      builder: (context, c) {
-        return Scaffold(
-          appBar: AppBar(),
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              margin: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                color: Color(0xff95D9FF),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Desktop Breakpoint ${bambooBreakPoint.desktop}'),
-                  Text('Normal Hieght ${context.height}'),
-                  Text("Mobile ${context.isMobile}"),
-                  Text("Tablet ${context.isTablet}"),
-                  Text("Desktop ${context.isDesktop}"),
-                  Text("Large ${context.isLarge}"),
-                  Text("Orientation ${context.orientation}"),
-                  BambooWidget(
-                    mobile: Container(
-                      height: 200,
-                      width: 200,
-                      color: Colors.white,
-                    ),
-                    desktop: Container(
-                      height: 200,
-                      width: 200,
-                      color: Colors.red,
-                    ),
-                  ),
-
-                  BamboonOrientation(
-                    portrait: Container(
-                      height: 200,
-                      width: 200,
-                      color: Colors.white,
-                    ),
-                    landscape: Container(
-                      height: 200,
-                      width: 200,
-                      color: Colors.red,
-                    ),
-                  ),
-                  // SizedBox(
-                  //   height: Bamboo.number(
-                  //     context: context,
-                  //     mobile: 3,
-                  //     desktop: 40,
-                  //     tablet: 50,
-                  //     unit: Unit.vmax,
-                  //   ),
-                  //   width: Bamboo.number(
-                  //     context: context,
-                  //     mobile: 7.5,
-                  //   ),
-                  //   child: Card(
-                  //     child: Container(),
-                  //   ),
-                  // )
-                ],
-              ),
+    return LayoutBuilder(builder: (context, c) {
+      return Scaffold(
+        appBar: AppBar(),
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height,
+            margin: const EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              color: Color(0xff95D9FF),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Desktop Breakpoint ${bambooBreakPoint.desktop}'),
+                Text('Normal Hieght ${context.height}'),
+                Text("Mobile ${context.isMobile}"),
+                Text("Tablet ${context.isTablet}"),
+                Text("Desktop ${context.isDesktop}"),
+                Text("Large ${context.isLarge}"),
+                Text("Orientation ${context.orientation}"),
+                BambooImage(
+                  mobile: Assets.images.background.path,
+                  builder: (context, path) {
+                    return Image.network(path);
+                  },
+                ),
+              ],
             ),
           ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }
+
+const imageMobile =
+    'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg';
+
+const imageDesktop =
+    'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg';
+
+const fallBackImage =
+    'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg';
