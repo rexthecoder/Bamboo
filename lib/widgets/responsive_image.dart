@@ -26,7 +26,6 @@ class BambooImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Responsive image widget which
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return builder(
