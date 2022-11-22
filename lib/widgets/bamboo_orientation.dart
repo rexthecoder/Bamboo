@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 /// Flutter update oreitaion based on the screen size
 /// so use orientaion when you want to make discission on how you layout on things.
 /// Landscape oreintation will be bigger than portrait
-class BamboonOrientation extends StatelessWidget {
-  const BamboonOrientation({
+class BambooOrientation extends StatelessWidget {
+  const BambooOrientation({
     super.key,
     required this.portrait,
     required this.landscape,
