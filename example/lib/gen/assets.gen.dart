@@ -41,6 +41,9 @@ class $AssetsImagesGen {
   AssetGenImage get typewriterOverheadBwW1080 =>
       const AssetGenImage('assets/images/typewriter_overhead_bw_w1080.jpg');
 
+  /// File path: assets/images/zeus.png
+  AssetGenImage get zeus => const AssetGenImage('assets/images/zeus.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         background,
@@ -49,7 +52,8 @@ class $AssetsImagesGen {
         joyNoteCoffeeEyeglassesOverheadBwW1080,
         mugsSideBwW1080,
         paperFlowerOverheadBwW1080,
-        typewriterOverheadBwW1080
+        typewriterOverheadBwW1080,
+        zeus
       ];
 }
 

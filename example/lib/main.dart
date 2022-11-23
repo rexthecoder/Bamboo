@@ -1,5 +1,7 @@
 import 'package:bamboo/bamboo.dart';
-import 'package:example/example/minimal/minimal.dart' deferred as box;
+
+import 'package:example/example/zeus/zeus.dart' deferred as box;
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,7 +41,7 @@ class MainPage extends StatelessWidget {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
-          return box.MinimalWebsite();
+          return box.ZeusApp();
         }
         return const CircularProgressIndicator(
           color: Colors.red,
