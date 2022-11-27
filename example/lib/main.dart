@@ -5,7 +5,7 @@ import 'package:example/example/zeus/zeus.dart' deferred as box;
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const App());
+  runApp(const MainPage());
 }
 
 class App extends StatelessWidget {

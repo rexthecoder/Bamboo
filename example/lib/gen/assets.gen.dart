@@ -8,6 +8,8 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
@@ -19,6 +21,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/coffee_paperclips_pencil_angled_bw_w1080.jpg
   AssetGenImage get coffeePaperclipsPencilAngledBwW1080 => const AssetGenImage(
       'assets/images/coffee_paperclips_pencil_angled_bw_w1080.jpg');
+
+  /// File path: assets/images/discord.svg
+  SvgGenImage get discord => const SvgGenImage('assets/images/discord.svg');
 
   /// File path: assets/images/iphone_cactus_tea_overhead_bw_w1080.jpg
   AssetGenImage get iphoneCactusTeaOverheadBwW1080 => const AssetGenImage(
@@ -33,26 +38,104 @@ class $AssetsImagesGen {
   AssetGenImage get mugsSideBwW1080 =>
       const AssetGenImage('assets/images/mugs_side_bw_w1080.jpg');
 
+  /// File path: assets/images/nft.png
+  AssetGenImage get nft => const AssetGenImage('assets/images/nft.png');
+
+  /// File path: assets/images/nftlogo.png
+  AssetGenImage get nftlogo => const AssetGenImage('assets/images/nftlogo.png');
+
   /// File path: assets/images/paper_flower_overhead_bw_w1080.jpg
   AssetGenImage get paperFlowerOverheadBwW1080 =>
       const AssetGenImage('assets/images/paper_flower_overhead_bw_w1080.jpg');
+
+  /// File path: assets/images/partner.png
+  AssetGenImage get partnerPng =>
+      const AssetGenImage('assets/images/partner.png');
+
+  /// File path: assets/images/partner.svg
+  SvgGenImage get partnerSvg => const SvgGenImage('assets/images/partner.svg');
+
+  /// File path: assets/images/sk2.png
+  AssetGenImage get sk2 => const AssetGenImage('assets/images/sk2.png');
+
+  /// File path: assets/images/sk3.png
+  AssetGenImage get sk3 => const AssetGenImage('assets/images/sk3.png');
+
+  /// File path: assets/images/sk4.png
+  AssetGenImage get sk4 => const AssetGenImage('assets/images/sk4.png');
+
+  /// File path: assets/images/sk5.png
+  AssetGenImage get sk5 => const AssetGenImage('assets/images/sk5.png');
+
+  /// File path: assets/images/sk6.png
+  AssetGenImage get sk6 => const AssetGenImage('assets/images/sk6.png');
+
+  /// File path: assets/images/sk7.png
+  AssetGenImage get sk7 => const AssetGenImage('assets/images/sk7.png');
+
+  /// File path: assets/images/ski.png
+  AssetGenImage get ski => const AssetGenImage('assets/images/ski.png');
+
+  /// File path: assets/images/ski8.png
+  AssetGenImage get ski8 => const AssetGenImage('assets/images/ski8.png');
+
+  /// File path: assets/images/step1.png
+  AssetGenImage get step1 => const AssetGenImage('assets/images/step1.png');
+
+  /// File path: assets/images/step2.png
+  AssetGenImage get step2 => const AssetGenImage('assets/images/step2.png');
+
+  /// File path: assets/images/step3.png
+  AssetGenImage get step3 => const AssetGenImage('assets/images/step3.png');
+
+  /// File path: assets/images/step4.png
+  AssetGenImage get step4 => const AssetGenImage('assets/images/step4.png');
+
+  /// File path: assets/images/story.png
+  AssetGenImage get story => const AssetGenImage('assets/images/story.png');
+
+  /// File path: assets/images/sun.svg
+  SvgGenImage get sun => const SvgGenImage('assets/images/sun.svg');
 
   /// File path: assets/images/typewriter_overhead_bw_w1080.jpg
   AssetGenImage get typewriterOverheadBwW1080 =>
       const AssetGenImage('assets/images/typewriter_overhead_bw_w1080.jpg');
 
+  /// File path: assets/images/wallet.svg
+  SvgGenImage get wallet => const SvgGenImage('assets/images/wallet.svg');
+
   /// File path: assets/images/zeus.png
   AssetGenImage get zeus => const AssetGenImage('assets/images/zeus.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
         background,
         coffeePaperclipsPencilAngledBwW1080,
+        discord,
         iphoneCactusTeaOverheadBwW1080,
         joyNoteCoffeeEyeglassesOverheadBwW1080,
         mugsSideBwW1080,
+        nft,
+        nftlogo,
         paperFlowerOverheadBwW1080,
+        partnerPng,
+        partnerSvg,
+        sk2,
+        sk3,
+        sk4,
+        sk5,
+        sk6,
+        sk7,
+        ski,
+        ski8,
+        step1,
+        step2,
+        step3,
+        step4,
+        story,
+        sun,
         typewriterOverheadBwW1080,
+        wallet,
         zeus
       ];
 }
@@ -122,6 +205,57 @@ class AssetGenImage {
   }
 
   ImageProvider provider() => AssetImage(_assetName);
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
+    );
+  }
 
   String get path => _assetName;
 

@@ -58,6 +58,8 @@ class Bamboo<T> {
       tablet: tablet,
       desktop: desktop,
       context: context,
+      large: large,
+      unit: Unit.px,
     ).adaptive;
   }
 
@@ -77,6 +79,7 @@ class Bamboo<T> {
       tablet: tablet,
       desktop: desktop,
       context: context,
+      large: large,
       unit: unit,
     ).adaptive;
   }
@@ -92,6 +95,8 @@ class Bamboo<T> {
       return _convertUnit(tablet ?? mobile, unit);
     } else if (context.isDesktop) {
       return _convertUnit(desktop ?? mobile, unit);
+    } else if (context.isLarge) {
+      return _convertUnit(large ?? mobile, unit);
     } else {
       return _convertUnit(mobile, unit);
     }

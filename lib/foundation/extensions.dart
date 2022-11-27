@@ -31,10 +31,10 @@ extension ResponsiveUtil on BuildContext {
   bool get isLarge => breakpoint!.desktop < width; 
 
   /// Return width based on orietation
-  double get width => MediaQuery.of(this).size.shortestSide;
+  double get width => MediaQuery.of(this).size.width;
 
   /// Return height based on orietation
-  double get height => MediaQuery.of(this).size.longestSide;
+  double get height => MediaQuery.of(this).size.height;
 }
 
 

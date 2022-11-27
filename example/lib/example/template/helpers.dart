@@ -51,3 +51,60 @@ List<String> images = [
   Assets.images.mugsSideBwW1080.path,
   Assets.images.typewriterOverheadBwW1080.path,
 ];
+
+final ButtonStyle zeusOutlineButtonStyle = OutlinedButton.styleFrom(
+  minimumSize: const Size(145, 50),
+  backgroundColor: const Color(0xff141B22),
+  padding: const EdgeInsets.symmetric(horizontal: 16),
+  shape: const RoundedRectangleBorder(
+    side: BorderSide(
+      color: Colors.black,
+      width: 1,
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(2)),
+  ),
+);
+
+final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+  minimumSize: const Size(100, 48),
+  backgroundColor: const Color(0xff141B22),
+  padding: const EdgeInsets.symmetric(horizontal: 16),
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(2)),
+  ),
+);
+
+class Steps {
+  Steps({
+    required this.title,
+    required this.description,
+    required this.image,
+  });
+
+  final String title;
+  final String description;
+  final AssetGenImage image;
+}
+
+List<Steps> stepItems = [
+  Steps(
+    title: 'Step 1',
+    description: 'Connect Your Wallet',
+    image: Assets.images.step1,
+  ),
+  Steps(
+    title: 'Step 2',
+    description: 'Select Your Quaility',
+    image: Assets.images.step2,
+  ),
+  Steps(
+    title: 'Step 3',
+    description: 'Confirm the Transaction',
+    image: Assets.images.step3,
+  ),
+  Steps(
+    title: 'Step 4',
+    description: 'Receive Your NFTs',
+    image: Assets.images.step4,
+  ),
+];
