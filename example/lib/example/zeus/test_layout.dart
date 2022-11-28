@@ -1,8 +1,7 @@
 import 'package:bamboo/bamboo.dart';
 import 'package:example/example/zeus/home_view.dart';
 import 'package:example/gen/assets.gen.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 class Layout extends StatelessWidget {

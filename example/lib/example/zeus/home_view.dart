@@ -1,18 +1,12 @@
-import 'dart:math';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bamboo/bamboo.dart';
-import 'package:example/example/template/colors.dart';
 import 'package:example/example/template/helpers.dart';
 import 'package:example/example/template/styles.dart';
 import 'package:example/example/zeus/test_layout.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_layout_grid/flutter_layout_grid.dart' as grid;
 import 'package:flutter_svg/svg.dart';
-
-import 'package:responsive_grid_list/responsive_grid_list.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -202,7 +196,7 @@ class TheStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 500,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
