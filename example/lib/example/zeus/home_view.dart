@@ -89,7 +89,12 @@ class _HomeViewState extends State<HomeView> {
                   height: 60,
                 ),
                 Assets.images.partnerPng.image(
-                  // width: MediaQuery.of(context).size.width - 300,
+                  width: Bamboo.value(
+                    context: context,
+                    mobile:  MediaQuery.of(context).size.width,
+                    large: MediaQuery.of(context).size.width - 300,
+                    desktop: MediaQuery.of(context).size.width - 300,
+                  ),
                 ),
                 const SizedBox(
                   height: 60,
@@ -182,7 +187,7 @@ class StoryCollection extends StatelessWidget {
       // width: MediaQuery.of(context).size.width - 400,
       decoration: BoxDecoration(
         image: DecorationImage(
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
           image: AssetImage(
             Assets.images.story.path,
           ),
@@ -193,7 +198,6 @@ class StoryCollection extends StatelessWidget {
         children: [
           const Padding(
             padding: EdgeInsets.symmetric(
-              // vertical: 60,
               horizontal: 35,
             ),
             child: TheStory(),
@@ -202,9 +206,19 @@ class StoryCollection extends StatelessWidget {
             width: 500,
             child: GridView.builder(
               itemCount: 4,
-              padding: const EdgeInsets.symmetric(
-                vertical: 60,
-                horizontal: 60,
+              padding: EdgeInsets.symmetric(
+                vertical: Bamboo.value(
+                  context: context,
+                  mobile: 60,
+                  large: 0,
+                  desktop: 0,
+                ),
+                horizontal: Bamboo.value(
+                  context: context,
+                  mobile: 60,
+                  large: 10,
+                  desktop: 10,
+                ),
               ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: Bamboo.value(
@@ -531,9 +545,17 @@ class HowTo extends StatelessWidget {
           height: 60,
         ),
         SizedBox(
-          // height: 180,
+          height: Bamboo.value(
+            context: context,
+            mobile: 800,
+            tablet: 800,
+            desktop: 180,
+            large: 180,
+          ),
           child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
+            ),
             scrollDirection: Bamboo.value(
               context: context,
               mobile: Axis.vertical,

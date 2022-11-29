@@ -16,7 +16,7 @@ extension ViewPointUnit on num {
     context = value;
   }
 
-   /// vmin - percent of smallest between width or height of viewport
+  /// vmin - percent of smallest between width or height of viewport
   Size get size => MediaQuery.of(context).size;
 
   /// Return vmin
@@ -32,7 +32,7 @@ extension ViewPointUnit on num {
   num get vh => this / 100.0 * (size.height);
 
   /// Return percentage
-  double get p => this * 100;
+  double get p => this * .10;
 
   /// Returen px
   num get px => this;
