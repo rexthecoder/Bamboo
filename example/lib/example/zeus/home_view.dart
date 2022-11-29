@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
                 Assets.images.partnerPng.image(
                   width: Bamboo.value(
                     context: context,
-                    mobile:  MediaQuery.of(context).size.width,
+                    mobile: MediaQuery.of(context).size.width,
                     large: MediaQuery.of(context).size.width - 300,
                     desktop: MediaQuery.of(context).size.width - 300,
                   ),
@@ -187,7 +187,13 @@ class StoryCollection extends StatelessWidget {
       // width: MediaQuery.of(context).size.width - 400,
       decoration: BoxDecoration(
         image: DecorationImage(
-          fit: BoxFit.fill,
+          fit: Bamboo.value(
+            context: context,
+            mobile: BoxFit.cover,
+            large: BoxFit.fill,
+            desktop: BoxFit.fill,
+            tablet: BoxFit.fill,
+          ),
           image: AssetImage(
             Assets.images.story.path,
           ),
