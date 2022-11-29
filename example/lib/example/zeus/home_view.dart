@@ -19,11 +19,11 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final ScrollController _controller = ScrollController();
-  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: ZeusColors.backgroundColor,
       body: SafeArea(
         child: NotificationListener<ScrollNotification>(
@@ -36,58 +36,7 @@ class _HomeViewState extends State<HomeView> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 80,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  color: const Color(0xff040B11),
-                  child: Row(
-                    mainAxisAlignment: Bamboo.value(
-                      context: context,
-                      mobile: MainAxisAlignment.spaceBetween,
-                      large: MainAxisAlignment.spaceEvenly,
-                      desktop: MainAxisAlignment.spaceEvenly,
-                    ),
-                    children: [
-                      Image.asset(
-                        Assets.images.nftlogo.path,
-                        height: 30,
-                      ),
-                      BambooWidget(
-                        mobile: CustomDrawer(
-                          color: ZeusColors.primary,
-                          isExpanded: isExpanded,
-                          size: 35,
-                          onPressed: (value) {
-                            setState(() {
-                              isExpanded = !isExpanded;
-                            });
-                          },
-                          child: const MobileNavigationItems(),
-                        ),
-                        desktop: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            NavigationItems(),
-                            SizedBox(
-                              width: 100,
-                            ),
-                            NavigationButtons(),
-                          ],
-                        ),
-                        large: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            NavigationItems(),
-                            SizedBox(
-                              width: 100,
-                            ),
-                            NavigationButtons(),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const ResponsiveNavigationBar(),
                 const Hero(),
                 const SizedBox(
                   height: 150,
@@ -149,6 +98,74 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ResponsiveNavigationBar extends StatefulWidget {
+  const ResponsiveNavigationBar({super.key});
+
+  @override
+  State<ResponsiveNavigationBar> createState() =>
+      _ResponsiveNavigationBarState();
+}
+
+class _ResponsiveNavigationBarState extends State<ResponsiveNavigationBar> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      color: const Color(0xff040B11),
+      child: Row(
+        mainAxisAlignment: Bamboo.value(
+          context: context,
+          mobile: MainAxisAlignment.spaceBetween,
+          large: MainAxisAlignment.spaceEvenly,
+          desktop: MainAxisAlignment.spaceEvenly,
+        ),
+        children: [
+          Image.asset(
+            Assets.images.nftlogo.path,
+            height: 30,
+          ),
+          BambooWidget(
+            mobile: CustomDrawer(
+              color: ZeusColors.primary,
+              isExpanded: isExpanded,
+              size: 35,
+              onPressed: (value) {
+                setState(() {
+                  isExpanded = !isExpanded;
+                });
+              },
+              child: const MobileNavigationItems(),
+            ),
+            desktop: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                NavigationItems(),
+                SizedBox(
+                  width: 100,
+                ),
+                NavigationButtons(),
+              ],
+            ),
+            large: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                NavigationItems(),
+                SizedBox(
+                  width: 100,
+                ),
+                NavigationButtons(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -596,12 +613,24 @@ class Hero extends StatelessWidget {
             children: [
               AutoSizeText(
                 'EXPLORE NFT COLLECTION',
+                textAlign: TextAlign.center,
                 style: TextStyles.header.copyWith(
-                  fontSize: 70,
+                  //TODO: DEBUG THE HEIGHT ON OTHER SCREEB
+                  height: 1,
+                  fontSize: Bamboo.value(
+                    context: context,
+                    large: 70,
+                    desktop: 70,
+                    mobile: 60,
+                  ),
                 ),
               ),
+              //TODO: DEBUG THE HEIGHT ON OTHER SCREEB
+              SizedBox(
+                height: 10,
+              ),
               AutoSizeText(
-                'A collection of 2525 highly-fashionable NFTs on the ETH Blockchain. Unique,\nmetaverse-ready, and designed to benefit their holders.',
+                'A collection of 2525 highly-fashionable NFTs on the ETH Blockchain. Unique,metaverse-ready, and designed to benefit their holders.',
                 style: TextStyles.body.copyWith(
                   fontSize: 15,
                   height: 1.5,
