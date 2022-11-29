@@ -6,6 +6,11 @@ import 'package:example/example/zeus/zeus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+
+void configureApp() {
+  setUrlStrategy(PathUrlStrategy());
+}
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -13,6 +18,7 @@ void main() {
     systemNavigationBarDividerColor: ZeusColors.backgroundColor,
     statusBarColor: ZeusColors.backgroundColor,
   ));
+  configureApp();
   runApp(const ZeusApp());
 }
 

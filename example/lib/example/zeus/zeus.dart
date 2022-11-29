@@ -13,6 +13,7 @@ class ZeusApp extends StatelessWidget {
         color: ZeusColors.backgroundColor,
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
+        title: 'NFTALIEN',
         theme: ThemeData(
           primaryColor: ZeusColors.primary,
           useMaterial3: true,
