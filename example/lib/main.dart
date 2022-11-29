@@ -1,7 +1,8 @@
 import 'package:bamboo/bamboo.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
+import 'package:example/example/zeus/zeus.dart';
 
-import 'package:example/example/zeus/zeus.dart' deferred as box;
+// import 'package:example/example/zeus/zeus.dart' deferred as box;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,7 @@ void main() {
     systemNavigationBarDividerColor: ZeusColors.backgroundColor,
     statusBarColor: ZeusColors.backgroundColor,
   ));
-  runApp(const MainPage());
+  runApp(const ZeusApp());
 }
 
 class App extends StatelessWidget {
@@ -27,7 +28,7 @@ class App extends StatelessWidget {
         themeMode: ThemeMode.light,
         // showPerformanceOverlay: true,
         title: 'Flutter Demo',
-        home: const MainPage(),
+        home: const ZeusApp(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -36,24 +37,24 @@ class App extends StatelessWidget {
   }
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+// class MainPage extends StatelessWidget {
+//   const MainPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<void>(
-      future: box.loadLibrary(),
-      builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          }
-          return box.ZeusApp();
-        }
-        return const CircularProgressIndicator(
-          color: Colors.red,
-        );
-      },
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return FutureBuilder<void>(
+//       future: box.loadLibrary(),
+//       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+//         if (snapshot.connectionState == ConnectionState.done) {
+//           if (snapshot.hasError) {
+//             return Text('Error: ${snapshot.error}');
+//           }
+//           return box.ZeusApp();
+//         }
+//         return const CircularProgressIndicator(
+//           color: Colors.red,
+//         );
+//       },
+//     );
+//   }
+// }

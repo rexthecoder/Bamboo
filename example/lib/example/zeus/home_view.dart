@@ -89,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
                   height: 60,
                 ),
                 Assets.images.partnerPng.image(
-                  width: MediaQuery.of(context).size.width - 300,
+                  // width: MediaQuery.of(context).size.width - 300,
                 ),
                 const SizedBox(
                   height: 60,
@@ -179,29 +179,45 @@ class StoryCollection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width - 400,
+      // width: MediaQuery.of(context).size.width - 400,
       decoration: BoxDecoration(
         image: DecorationImage(
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
           image: AssetImage(
             Assets.images.story.path,
           ),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Wrap(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const TheStory(),
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              // vertical: 60,
+              horizontal: 35,
+            ),
+            child: TheStory(),
+          ),
           SizedBox(
             width: 500,
             child: GridView.builder(
               itemCount: 4,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
+              padding: const EdgeInsets.symmetric(
+                vertical: 60,
+                horizontal: 60,
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: Bamboo.value(
+                  context: context,
+                  mobile: 1,
+                  desktop: 2,
+                  large: 2,
+                ),
+                mainAxisSpacing: 20,
                 crossAxisSpacing: 10,
                 mainAxisExtent: 180,
               ),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return const StoryCard();
@@ -639,7 +655,7 @@ class Hero extends StatelessWidget {
                 ),
               ),
               //TODO: DEBUG THE HEIGHT ON OTHER SCREEB
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               AutoSizeText(
