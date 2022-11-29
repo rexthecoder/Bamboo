@@ -6,6 +6,7 @@ import 'package:example/example/zeus/custom_drawer.dart';
 import 'package:example/example/zeus/scroll_to_reveal.dart';
 import 'package:example/example/zeus/test_layout.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
+import 'package:example/example/zeus/zeus.dart';
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,6 +23,9 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    if (context.width < 300) {
+      return const NotSupported();
+    }
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: ZeusColors.backgroundColor,
@@ -192,7 +196,7 @@ class StoryCollection extends StatelessWidget {
             mobile: BoxFit.cover,
             large: BoxFit.fill,
             desktop: BoxFit.fill,
-            tablet: BoxFit.fill,
+            tablet: BoxFit.contain,
           ),
           image: AssetImage(
             Assets.images.story.path,
@@ -342,7 +346,7 @@ class TheStory extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Row(
+          Wrap(
             children: const [
               StoryCounter(
                 title: 'Total Iteam',
@@ -610,6 +614,7 @@ class StepsCard extends StatelessWidget {
       constraints: const BoxConstraints(
         minHeight: 180,
         minWidth: 250,
+        maxWidth: 250,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -654,6 +659,7 @@ class Hero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       alignment: Alignment.bottomCenter,
       height: 600,
