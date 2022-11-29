@@ -404,7 +404,14 @@ class HotCollection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 205.0),
+          padding: EdgeInsets.only(
+            left: Bamboo.value(
+              context: context,
+              mobile: 35,
+              large: 205.0,
+              desktop: 205.0,
+            ),
+          ),
           child: AutoSizeText(
             'HOT COLLECTION',
             style: TextStyles.header.copyWith(
@@ -508,9 +515,15 @@ class HowTo extends StatelessWidget {
           height: 60,
         ),
         SizedBox(
-          height: 180,
+          // height: 180,
           child: ListView.builder(
-            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            scrollDirection: Bamboo.value(
+              context: context,
+              mobile: Axis.vertical,
+              large: Axis.horizontal,
+              desktop: Axis.horizontal,
+            ),
             itemCount: 4,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
