@@ -2,81 +2,152 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bamboo/bamboo.dart';
 import 'package:example/example/template/helpers.dart';
 import 'package:example/example/template/styles.dart';
+import 'package:example/example/zeus/custom_drawer.dart';
+import 'package:example/example/zeus/scroll_to_reveal.dart';
 import 'package:example/example/zeus/test_layout.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final ScrollController _controller = ScrollController();
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ZeusColors.backgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 80,
-              color: const Color(0xff040B11),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Image.asset(
-                    Assets.images.nftlogo.path,
-                    height: 30,
-                  ),
-                  const NavigationItems(),
-                  const NavigationButtons()
-                ],
-              ),
-            ),
-            const Hero(),
-            const SizedBox(
-              height: 150,
-            ),
-            const HowTo(),
-            const SizedBox(
-              height: 60,
-            ),
-            const HotCollection(),
-            const SizedBox(
-              height: 60,
-            ),
-            const StoryCollection(),
-            const SizedBox(
-              height: 60,
-            ),
-            Center(
-              child: AutoSizeText.rich(
-                TextSpan(
-                  text: 'BINABOX',
-                  style: TextStyles.header.copyWith(
-                    color: ZeusColors.primary,
-                  ),
-                  children: const [
-                    TextSpan(
-                      text: ' PARTNER',
-                      style: TextStyles.header,
+      body: SafeArea(
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (notification) {
+            return true;
+          },
+          child: SingleChildScrollView(
+            controller: _controller,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 80,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  color: const Color(0xff040B11),
+                  child: Row(
+                    mainAxisAlignment: Bamboo.value(
+                      context: context,
+                      mobile: MainAxisAlignment.spaceBetween,
+                      large: MainAxisAlignment.spaceEvenly,
+                      desktop: MainAxisAlignment.spaceEvenly,
                     ),
-                  ],
+                    children: [
+                      Image.asset(
+                        Assets.images.nftlogo.path,
+                        height: 30,
+                      ),
+                      BambooWidget(
+                        mobile: CustomDrawer(
+                          color: ZeusColors.primary,
+                          isExpanded: isExpanded,
+                          size: 35,
+                          onPressed: (value) {
+                            setState(() {
+                              isExpanded = !isExpanded;
+                            });
+                          },
+                          child: const MobileNavigationItems(),
+                        ),
+                        desktop: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            NavigationItems(),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            NavigationButtons(),
+                          ],
+                        ),
+                        large: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
+                            NavigationItems(),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            NavigationButtons(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                const Hero(),
+                const SizedBox(
+                  height: 150,
+                ),
+                ScrollToReveal(
+                  animationType: AnimationType.findInLeft,
+                  incrementPosition: 0,
+                  scrollController: _controller,
+                  label: 'How',
+                  child: const HowTo(),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                ScrollToReveal(
+                  animationType: AnimationType.findInRight,
+                  scrollController: _controller,
+                  label: 'Collection',
+                  child: const HotCollection(),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                ScrollToReveal(
+                  animationType: AnimationType.findInLeft,
+                  scrollController: _controller,
+                  label: 'Story',
+                  child: const StoryCollection(),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Center(
+                  child: AutoSizeText.rich(
+                    TextSpan(
+                      text: 'BINABOX',
+                      style: TextStyles.header.copyWith(
+                        color: ZeusColors.primary,
+                      ),
+                      children: const [
+                        TextSpan(
+                          text: ' PARTNER',
+                          style: TextStyles.header,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Assets.images.partnerPng.image(
+                  width: MediaQuery.of(context).size.width - 300,
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 60,
-            ),
-            Assets.images.partnerPng.image(
-              width: MediaQuery.of(context).size.width - 300,
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -601,17 +672,6 @@ class Hero extends StatelessWidget {
           ),
         ],
       ),
-      // color: Colors.red,
-      // padding: const EdgeInsets.all(10),
-      // decoration: BoxDecoration(
-      //   color: Colors.transparent,
-      //   image: DecorationImage(
-      //     fit: BoxFit.cover,
-      //     image: AssetImage(
-      //       Assets.images.nft.path,
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
@@ -643,13 +703,17 @@ class NavigationButtons extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 Assets.images.discord.path,
+                height: 18,
               ),
               const SizedBox(
                 width: 8,
               ),
-              const AutoSizeText(
+              AutoSizeText(
                 "DISCORD",
-                style: TextStyles.body,
+                style: TextStyles.body.copyWith(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               )
             ],
           ),
@@ -669,17 +733,70 @@ class NavigationButtons extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 Assets.images.wallet.path,
+                height: 18,
               ),
               const SizedBox(
                 width: 8,
               ),
               AutoSizeText(
-                "DISCORD",
+                "CONNECT",
                 style: TextStyles.body.copyWith(
                   color: const Color(0xff141B22),
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
                 ),
               )
             ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class MobileNavigationItems extends StatelessWidget {
+  const MobileNavigationItems({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "HOME",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "ABOUT",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "ROADMAP",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "COLLECTION",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "FAQS",
+            style: TextStyles.header,
           ),
         ),
       ],

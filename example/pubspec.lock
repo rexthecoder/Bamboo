@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.2.0"
+  animate_do:
+    dependency: "direct main"
+    description:
+      name: animate_do
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   args:
     dependency: transitive
     description:
@@ -438,6 +445,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  simple_animations:
+    dependency: "direct main"
+    description:
+      name: simple_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -527,6 +541,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  web_smooth_scroll:
+    dependency: "direct main"
+    description:
+      name: web_smooth_scroll
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   web_socket_channel:
     dependency: transitive
     description:
