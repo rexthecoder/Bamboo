@@ -139,7 +139,6 @@ Mode is a class that allows you to set widgets based on the current mode, either
       ),
     ),
 ```
-<p>&nbsp;</p>
 
 # Extensions 📍
 Extension methods add functionality to existing libraries. Since we use some extensions initially we made up our minds to share those with you too. Below is all the extension you can access. We are trying hard to add more.
