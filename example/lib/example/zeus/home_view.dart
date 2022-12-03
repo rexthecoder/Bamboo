@@ -6,7 +6,6 @@ import 'package:example/example/zeus/custom_drawer.dart';
 import 'package:example/example/zeus/scroll_to_reveal.dart';
 import 'package:example/example/zeus/test_layout.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
-import 'package:example/example/zeus/zeus.dart';
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -674,7 +673,6 @@ class Hero extends StatelessWidget {
                 'EXPLORE NFT COLLECTION',
                 textAlign: TextAlign.center,
                 style: TextStyles.header.copyWith(
-                  //TODO: DEBUG THE HEIGHT ON OTHER SCREEB
                   height: 1,
                   fontSize: Bamboo.value(
                     context: context,
@@ -684,7 +682,6 @@ class Hero extends StatelessWidget {
                   ),
                 ),
               ),
-              //TODO: DEBUG THE HEIGHT ON OTHER SCREEB
               const SizedBox(
                 height: 10,
               ),

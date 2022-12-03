@@ -2,6 +2,8 @@
 
 Utilities that make it easy and fast to build adaptive apps for mobile, web, and beyond with Flutter.
 
+![Bamboo](media/logo.svg)
+
 <p>&nbsp;</p>
 
 ## Getting started

@@ -46,9 +46,9 @@ packages:
   bamboo:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: bamboo
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.1"
   boolean_selector:
     dependency: transitive
@@ -422,13 +422,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
-  responsive_grid_list:
-    dependency: "direct main"
-    description:
-      name: responsive_grid_list
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.0"
   rxdart:
     dependency: transitive
     description:
@@ -546,13 +539,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-  web_smooth_scroll:
-    dependency: "direct main"
-    description:
-      name: web_smooth_scroll
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   web_socket_channel:
     dependency: transitive
     description:

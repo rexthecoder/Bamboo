@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:bamboo/bamboo.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
 import 'package:example/example/zeus/zeus.dart';
@@ -48,25 +46,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-// class MainPage extends StatelessWidget {
-//   const MainPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder<void>(
-//       future: box.loadLibrary(),
-//       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-//         if (snapshot.connectionState == ConnectionState.done) {
-//           if (snapshot.hasError) {
-//             return Text('Error: ${snapshot.error}');
-//           }
-//           return box.ZeusApp();
-//         }
-//         return const CircularProgressIndicator(
-//           color: Colors.red,
-//         );
-//       },
-//     );
-//   }
-// }
