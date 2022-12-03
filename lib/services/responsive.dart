@@ -146,20 +146,3 @@ class Bamboo<T> {
     }
   }
 }
-
-@Deprecated('You can use BamboonResponsive.value instead')
-T responsiveValue<T>({
-  required BuildContext context,
-  required T mobile,
-  T? tablet,
-  T? desktop,
-  Unit relativeUnit = Unit.p,
-}) {
-  return Bamboo<T>(
-    mobile: mobile,
-    tablet: tablet,
-    context: context,
-    desktop: desktop,
-    unit: relativeUnit,
-  ).adaptive;
-}

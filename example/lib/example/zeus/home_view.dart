@@ -23,9 +23,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    if (context.width < 300) {
-      return const NotSupported();
-    }
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: ZeusColors.backgroundColor,
@@ -659,7 +656,6 @@ class Hero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       alignment: Alignment.bottomCenter,
       height: 600,

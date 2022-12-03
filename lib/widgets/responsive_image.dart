@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 typedef ResponsiveImageBuilder = Widget Function(
   BuildContext context,
-  dynamic path,
+  dynamic imagePath,
 );
 
 class BambooImage extends StatelessWidget {

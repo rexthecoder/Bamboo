@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:bamboo/bamboo.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
 import 'package:example/example/zeus/zeus.dart';
+import 'package:flutter/foundation.dart';
 
 // import 'package:example/example/zeus/zeus.dart' deferred as box;
 
@@ -18,7 +21,9 @@ void main() {
     systemNavigationBarDividerColor: ZeusColors.backgroundColor,
     statusBarColor: ZeusColors.backgroundColor,
   ));
-  configureApp();
+  if (kIsWeb) {
+    configureApp();
+  }
   runApp(const ZeusApp());
 }
 
@@ -29,6 +34,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BambooBreakPoint(
+      mobile: 500,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,

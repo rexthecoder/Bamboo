@@ -21,7 +21,7 @@ class ZeusApp extends StatelessWidget {
           primaryColor: ZeusColors.primary,
           useMaterial3: true,
         ),
-        home: HomeView(),
+        home: const HomeView(),
       ),
     );
   }
@@ -34,7 +34,7 @@ class NotSupported extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: ZeusColors.backgroundColor,
       body: Center(
         child: AutoSizeText(
