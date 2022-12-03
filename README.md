@@ -1,6 +1,6 @@
 # Bamboo
 
-Utilies that makes it easy and fast to build adaptive apps for mobile, web and beyond with Flutter
+Utilities that make it easy and fast to build adaptive apps for mobile, web, and beyond with Flutter.
 
 <p>&nbsp;</p>
 
@@ -21,8 +21,8 @@ In your library add the following import:
 import 'package:bamboo/bamboo.dart';
 ```
 
-Wrap your MaterialApp or root widget with our inherited widget.
-You can define your own breakpoint using our inherited widget.
+Wrap your MaterialApp or root widget with our inherited widget.By defualt we have a default breakpoint but you can define your own breakpoint using our inherited widget.
+
 ```dart
     BambooBreakPoint(
       mobile: 500,
@@ -36,12 +36,13 @@ You can define your own breakpoint using our inherited widget.
 <p>&nbsp;</p>
 
 # Features 📝
-> Bamboo required you to set a value for mobile breakpoint. If you don't set tht value for the others, it would automatically use the mobile as defualt for all the available breakpoint (desktop, tablet, large). 
+> Bamboo requires you to set a value for the mobile breakpoint. If you don't provide values for the others, it will automatically use the mobile as default for all the available breakpoints (desktop, tablet, large). 
 
 <p>&nbsp;</p>
 
 ## Bamboo Value
-A class that allow you to set widgets based on breakpoint. It can be use in most case, where ever you want to have an adaptive value.
+A class that allows you to set widgets based on the breakpoint. You can use it in most cases, where ever you want to have an adaptive value.
+
 ```dart
     Container(
         child: Bamboo.value(
@@ -55,7 +56,7 @@ A class that allow you to set widgets based on breakpoint. It can be use in most
 <p>&nbsp;</p>
 
 ## Bamboo number
-Works just like `Bamboo Value` but this goes with eveyrthing numbers. It allows you to specify the unit you would like to use, and all the math wis done at the background. Currently, we support only, `p`, `vmin`, `vmax`, `vw`, `vh`,`px`.
+It works just like `Bamboo Value` but this goes with everything numbers. It allows you to specify the unit you would like to use. Currently, we support only, `p`, `vmin`, `vmax`, `vw`, `vh`, and `px`.
 
 ```dart
     Container(
@@ -71,7 +72,8 @@ Works just like `Bamboo Value` but this goes with eveyrthing numbers. It allows 
 <p>&nbsp;</p>
 
 ## BambooWidget
-Responsive widget that allow you to define widget based on the current brealpoint. When you don't set breakpoint for desktop, tablet and large, it would automatically use mobile breakpoint.
+A responsive widget that allows you to define widgets based on the current breakpoint. When you don't set the breakpoint for desktop, tablet, and large, it will automatically use the mobile breakpoint.
+
 ```dart
    BambooWidget(
      mobile: Container(),
@@ -81,7 +83,7 @@ Responsive widget that allow you to define widget based on the current brealpoin
 ```
 
 ##  BambooImage
-BambooImage image allow you to specify mutilple Image path which shows based on the current breakpoint.
+BambooImage image allows you to specify multiple Image path which shows based on the current breakpoint.
 
 ```dart
     BambooImage(
@@ -113,7 +115,8 @@ BambooHidden hide/display specify widget based on the current breakpoint.
 <p>&nbsp;</p>
 
 ## BambooOrientation
-Orientation describe the positioning or overall layout of an item related to other items. BambooOrientation provides you with the common orientations found in some software applications, thus  Portrait and Landscape.
+Orientation describes the positioning or overall layout of an item related to other items. BambooOrientation provides you with the common orientations found in most software applications, thus Portrait and Landscape.
+
 ```dart
   // Display a widget based on the current Orientation
   const BambooOrientation(
@@ -125,7 +128,7 @@ Orientation describe the positioning or overall layout of an item related to oth
 <p>&nbsp;</p>
 
 ## Mode
-Mode is class that allow you to set widget based on the current mode, either black or white. It is into two form, `Mode.all()` this only you to set one value but it applies for both theme. `Mode.only()` this only you to set either for light or dark
+Mode is a class that allows you to set widgets based on the current mode, either black or white. It is in two forms, `Mode.all()` this allow you to set one value which applies to both themes. `Mode.only()` this allow you to set either for light or dark.
 
 ```dart
    /// Mode.only()
@@ -148,7 +151,7 @@ Mode is class that allow you to set widget based on the current mode, either bla
 <p>&nbsp;</p>
 
 # Extensions 📍
-Extension methods add functionality to existing libraries. Since we use some extensions initially we made our mind to share those with you to. Below are all the extension you can access. We are trying hard to add more.
+Extension methods add functionality to existing libraries. Since we use some extensions initially we made up our minds to share those with you too. Below is all the extension you can access. We are trying hard to add more.
 
 ```dart
   /// Returns the current orientation, either portrait or lanscape
