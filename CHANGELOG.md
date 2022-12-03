@@ -7,3 +7,6 @@
 * Fix height and width issue
 * Introduce a new widget
 * Added one new example
+
+## 1.0.1
+* Updated Readme

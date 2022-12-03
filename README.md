@@ -2,9 +2,8 @@
 
 Utilities that make it easy and fast to build adaptive apps for mobile, web, and beyond with Flutter.
 
-![Bamboo](media/logo.svg)
+![Bamboo](https://user-images.githubusercontent.com/36260221/205433724-5c04c706-2a35-4fd5-b4a6-3b5e40f71a03.svg)
 
-<p>&nbsp;</p>
 
 ## Getting started
 
@@ -35,12 +34,9 @@ Wrap your MaterialApp or root widget with our inherited widget.By defualt we hav
 ```
 
 
-<p>&nbsp;</p>
-
 # Features 📝
 > Bamboo requires you to set a value for the mobile breakpoint. If you don't provide values for the others, it will automatically use the mobile as default for all the available breakpoints (desktop, tablet, large). 
 
-<p>&nbsp;</p>
 
 ## Bamboo Value
 A class that allows you to set widgets based on the breakpoint. You can use it in most cases, where ever you want to have an adaptive value.
@@ -55,7 +51,6 @@ A class that allows you to set widgets based on the breakpoint. You can use it i
     ),
 ```
 
-<p>&nbsp;</p>
 
 ## Bamboo number
 It works just like `Bamboo Value` but this goes with everything numbers. It allows you to specify the unit you would like to use. Currently, we support only, `p`, `vmin`, `vmax`, `vw`, `vh`, and `px`.
@@ -71,7 +66,6 @@ It works just like `Bamboo Value` but this goes with everything numbers. It allo
     ),
 ```
 
-<p>&nbsp;</p>
 
 ## BambooWidget
 A responsive widget that allows you to define widgets based on the current breakpoint. When you don't set the breakpoint for desktop, tablet, and large, it will automatically use the mobile breakpoint.
@@ -98,8 +92,6 @@ BambooImage image allows you to specify multiple Image path which shows based on
     )
 ```
 
-<p>&nbsp;</p>
-
 ## BambooHidden
 BambooHidden hide/display specify widget based on the current breakpoint.
 
@@ -114,7 +106,6 @@ BambooHidden hide/display specify widget based on the current breakpoint.
 ```
 
 
-<p>&nbsp;</p>
 
 ## BambooOrientation
 Orientation describes the positioning or overall layout of an item related to other items. BambooOrientation provides you with the common orientations found in most software applications, thus Portrait and Landscape.
@@ -126,8 +117,6 @@ Orientation describes the positioning or overall layout of an item related to ot
      landscape: FlutterLogo()
     )
 ```
-
-<p>&nbsp;</p>
 
 ## Mode
 Mode is a class that allows you to set widgets based on the current mode, either black or white. It is in two forms, `Mode.all()` this allow you to set one value which applies to both themes. `Mode.only()` this allow you to set either for light or dark.
@@ -178,14 +167,14 @@ Extension methods add functionality to existing libraries. Since we use some ext
    context.isLight
 ```
 
-<p>&nbsp;</p>
+
 
 ## Known Issues 🧪
 
 No known issues so far.
 
 
-<p>&nbsp;</p>
+
 
 ## Contributing ⚙️
 
@@ -195,6 +184,6 @@ No known issues so far.
 *   Dig into CONTRIBUTING.MD, which covers submitting bugs, requesting new features, preparing your code for a pull request, etc.
 *   Please don't forget to **like**, **follow**, and **star our repo**!
 
-<p>&nbsp;</p>
+
 
 ### Show some ❤️ and star the repo
