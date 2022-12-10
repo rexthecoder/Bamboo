@@ -1,14 +1,15 @@
 import 'package:bamboo/bamboo.dart';
+import 'package:example/example/game/game.dart';
 import 'package:example/example/zeus/theme/zeus_colors.dart';
 import 'package:example/example/zeus/zeus.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+// import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-void configureApp() {
-  setUrlStrategy(PathUrlStrategy());
-}
+// void configureApp() {
+//   setUrlStrategy(PathUrlStrategy());
+// }
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -16,10 +17,7 @@ void main() {
     systemNavigationBarDividerColor: ZeusColors.backgroundColor,
     statusBarColor: ZeusColors.backgroundColor,
   ));
-  if (kIsWeb) {
-    configureApp();
-  }
-  runApp(const ZeusApp());
+  runApp(const GameApp());
 }
 
 class App extends StatelessWidget {

@@ -25,6 +25,8 @@ class $AssetsImagesGen {
   /// File path: assets/images/discord.svg
   SvgGenImage get discord => const SvgGenImage('assets/images/discord.svg');
 
+  $AssetsImagesGamesGen get games => const $AssetsImagesGamesGen();
+
   /// File path: assets/images/iphone_cactus_tea_overhead_bw_w1080.jpg
   AssetGenImage get iphoneCactusTeaOverheadBwW1080 => const AssetGenImage(
       'assets/images/iphone_cactus_tea_overhead_bw_w1080.jpg');
@@ -137,6 +139,77 @@ class $AssetsImagesGen {
         typewriterOverheadBwW1080,
         wallet,
         zeus
+      ];
+}
+
+class $AssetsImagesGamesGen {
+  const $AssetsImagesGamesGen();
+
+  /// File path: assets/images/games/hero.jpg
+  AssetGenImage get heroJpg =>
+      const AssetGenImage('assets/images/games/hero.jpg');
+
+  /// File path: assets/images/games/hero.png
+  AssetGenImage get heroPng =>
+      const AssetGenImage('assets/images/games/hero.png');
+
+  /// File path: assets/images/games/hero.svg
+  SvgGenImage get heroSvg => const SvgGenImage('assets/images/games/hero.svg');
+
+  /// File path: assets/images/games/logo.png
+  AssetGenImage get logoPng =>
+      const AssetGenImage('assets/images/games/logo.png');
+
+  /// File path: assets/images/games/logo.svg
+  SvgGenImage get logoSvg => const SvgGenImage('assets/images/games/logo.svg');
+
+  /// File path: assets/images/games/scrolldown.svg
+  SvgGenImage get scrolldown =>
+      const SvgGenImage('assets/images/games/scrolldown.svg');
+
+  /// File path: assets/images/games/section2.png
+  AssetGenImage get section2 =>
+      const AssetGenImage('assets/images/games/section2.png');
+
+  /// File path: assets/images/games/stack1.png
+  AssetGenImage get stack1 =>
+      const AssetGenImage('assets/images/games/stack1.png');
+
+  /// File path: assets/images/games/stack2.png
+  AssetGenImage get stack2 =>
+      const AssetGenImage('assets/images/games/stack2.png');
+
+  /// File path: assets/images/games/stack3.png
+  AssetGenImage get stack3 =>
+      const AssetGenImage('assets/images/games/stack3.png');
+
+  /// File path: assets/images/games/stack4.png
+  AssetGenImage get stack4 =>
+      const AssetGenImage('assets/images/games/stack4.png');
+
+  /// File path: assets/images/games/steamicon.svg
+  SvgGenImage get steamicon =>
+      const SvgGenImage('assets/images/games/steamicon.svg');
+
+  /// File path: assets/images/games/xboxicon.svg
+  SvgGenImage get xboxicon =>
+      const SvgGenImage('assets/images/games/xboxicon.svg');
+
+  /// List of all assets
+  List<dynamic> get values => [
+        heroJpg,
+        heroPng,
+        heroSvg,
+        logoPng,
+        logoSvg,
+        scrolldown,
+        section2,
+        stack1,
+        stack2,
+        stack3,
+        stack4,
+        steamicon,
+        xboxicon
       ];
 }
 
