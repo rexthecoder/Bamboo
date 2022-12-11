@@ -721,7 +721,7 @@ class Hero extends StatelessWidget {
                       "Connect Wallet",
                       style: TextStyles.body.copyWith(
                           color: const Color(0xff141B22),
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,),
                     ),
                   ),
                   const SizedBox(

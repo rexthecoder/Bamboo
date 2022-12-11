@@ -15,24 +15,13 @@ class HomeView extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 7, 6, 6),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            const HeroCard(),
-            Container(
-              height: 750,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    Assets.images.games.section2.path,
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [StoryLabel(), StackCard()],
-              ),
-            )
+          children: const [
+            HeroCard(),
+            Gallery(),
+            Feature(),
+            Requirements(),
+            NewLetter(),
+            Footer()
           ],
         ),
       ),
@@ -40,88 +29,46 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class StackCard extends StatefulWidget {
-  const StackCard({
+class Footer extends StatelessWidget {
+  const Footer({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<StackCard> createState() => _StackCardState();
-}
-
-class _StackCardState extends State<StackCard>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> _animation;
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        seconds: 2,
-      ),
-    );
-
-    CurvedAnimation curvedAnimation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOut,
-    );
-
-    _animation = Tween<Offset>(
-      begin: const Offset(0.0, 0.0),
-      end: const Offset(-5.0, 0.0),
-    ).animate(curvedAnimation)
-      ..addListener(() {
-        setState(() {});
-      });
-
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 300,
-      child: PageView(
-        
+         color: const Color(0xff080A0B),
+         padding: EdgeInsets.symmetric(
+          vertical: 30,
+         ),
+      child: Column(
         children: [
-          Container(
-            height: 400,
-            width: 320,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  Assets.images.games.stack3.path,
-                ),
-              ),
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-            ),
+          const FooterNavBar(),
+          const SizedBox(
+            height: 20,
           ),
-          Container(
-            height: 400,
-            width: 320,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  Assets.images.games.stack1.path,
-                ),
+          const Divider(
+            height: 10,
+            indent: 100,
+            thickness: 1,
+            endIndent: 100,
+            color: Color.fromARGB(39, 156, 155, 155),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              AutoSizeText(
+                ' © 2018 Outpost Games, Inc. All Rights Reserved',
+                style: TextStyles.body,
               ),
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-            ),
+              AutoSizeText(
+                'Privacy Policy | Terms of Services | Code of Conduct ',
+                style: TextStyles.body,
+              )
+            ],
           ),
         ],
       ),
@@ -129,8 +76,486 @@ class _StackCardState extends State<StackCard>
   }
 }
 
-/// Widget that has stack card and switch them when a button is click
+class FooterNavBar extends StatelessWidget {
+  const FooterNavBar({
+    Key? key,
+  }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Image.asset(
+          Assets.images.games.logoPng.path,
+          height: 50,
+        ),
+        const NavigationItems(),
+        Row(
+          children: [
+            SvgPicture.asset(
+              Assets.images.games.xboxicon.path,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            SvgPicture.asset(
+              Assets.images.games.steamicon.path,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class NewLetter extends StatelessWidget {
+  const NewLetter({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 750,
+      width: double.infinity,
+      color: const Color(0xff080A0B),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Assets.images.games.toy.image(
+            height: 600,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AutoSizeText(
+                'WANT TO STAY IN TOUCH?',
+                style: TextStyles.header.copyWith(
+                  fontSize: 15,
+                  height: 1.5,
+                  letterSpacing: 3,
+                  wordSpacing: 1,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              AutoSizeText(
+                'NEWSLETTER SUBSCRIBE',
+                style: TextStyles.header.copyWith(
+                  color: Colors.white,
+                  fontSize: 50,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: 400,
+                child: AutoSizeText(
+                  'In order to start receiving our news, all you have to do is enter your email address. Everything else will be taken care of by us. We will send you emails containing information about game. We don\'t spam..',
+                  style: TextStyles.body.copyWith(
+                    color: Colors.white.withOpacity(0.8),
+                    wordSpacing: 1.0,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 300,
+                    height: 200,
+                    child: TextField(
+                      cursorColor: Colors.white,
+                      style: TextStyles.body.copyWith(
+                        color: const Color(0xffFFB548),
+                        fontSize: 14,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'rexthedev@gmail.com',
+                        hintStyle: TextStyles.body.copyWith(
+                        color: const Color(0xffFFB548),
+                          fontSize: 14,
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        filled: true,
+                        fillColor: const Color(0xff1C1E1F),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  AnimatedButton(
+                    height: 45,
+                    width: 150,
+                    borderColor: Colors.white,
+                    color: const Color(0xffFFB548),
+                    onPressed: () {},
+                    child: const AutoSizeText(
+                      'Subscribe now',
+                      style: TextStyle(
+                        fontSize: 10,
+                        height: 1.5,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff1A1917),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Requirements extends StatelessWidget {
+  const Requirements({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 750,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            Assets.images.games.requirement.path,
+          ),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AutoSizeText(
+            'CAN MY COMPUTER RUN THIS GAME?',
+            style: TextStyles.header.copyWith(
+              fontSize: 15,
+              height: 1.5,
+              letterSpacing: 3,
+              wordSpacing: 1,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          AutoSizeText(
+            'SYSTEM REQUIREMENTS',
+            style: TextStyles.header.copyWith(
+              color: Colors.white,
+              fontSize: 50,
+            ),
+          ),
+          const SizedBox(
+            height: 60,
+          ),
+          Container(
+            width: double.infinity,
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: SvgPicture.asset(
+              Assets.images.games.requirements.path,
+              fit: BoxFit.scaleDown,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Feature extends StatelessWidget {
+  const Feature({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: const Alignment(0.4, 0.0),
+      height: 750,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            Assets.images.games.feat.path,
+          ),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: FittedBox(
+        child: Container(
+          alignment: Alignment.centerRight,
+          child: FittedBox(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AutoSizeText(
+                  'WHAT\'S SO SPECIAL?',
+                  style: TextStyles.header.copyWith(
+                    fontSize: 15,
+                    height: 1.5,
+                    letterSpacing: 3,
+                    wordSpacing: 1,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                AutoSizeText(
+                  'FEATURES',
+                  style: TextStyles.header.copyWith(
+                    color: Colors.white,
+                    fontSize: 50,
+                  ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Row(
+                  children: [
+                    const GalleryDivider(),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          'SURVIVE AT ALL COSTS',
+                          style: TextStyles.header.copyWith(
+                            color: const Color(0xffFFB548),
+                            fontSize: 25,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        SizedBox(
+                          width: 300,
+                          child: AutoSizeText(
+                            'You have 30 minutes to find a relic, signal for extraction, and grab one of three spots on the rescue chopper.',
+                            style: TextStyles.body.copyWith(
+                              color: Colors.white.withOpacity(0.8),
+                              wordSpacing: 1.0,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        AutoSizeText(
+                          'CREATE ALLIES AND ENEMIES',
+                          style: TextStyles.header.copyWith(
+                            color: const Color(0xffFFB548),
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      height: 10,
+                      width: 10,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    AutoSizeText(
+                      'IMPRESS THE AUDIENCE',
+                      style: TextStyles.header.copyWith(
+                        color: const Color(0xffFFB548),
+                        fontSize: 25,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class GalleryDivider extends StatelessWidget {
+  const GalleryDivider({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 10,
+          width: 10,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+        ),
+        Container(
+          height: 120,
+          width: 2,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.white,
+            ),
+          ),
+        ),
+        Container(
+          height: 10,
+          width: 10,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Gallery extends StatelessWidget {
+  const Gallery({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 750,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            Assets.images.games.section2.path,
+          ),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          StoryLabel(),
+          SizedBox(
+            width: 100,
+          ),
+          ImageStack()
+        ],
+      ),
+    );
+  }
+}
+
+class ImageStack extends StatefulWidget {
+  const ImageStack({super.key});
+
+  @override
+  State<ImageStack> createState() => _ImageStackState();
+}
+
+class _ImageStackState extends State<ImageStack> {
+  bool shouldScale = false;
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onHover: (event) {
+        setState(() {
+          shouldScale = true;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          shouldScale = false;
+        });
+      },
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 200),
+        opacity: shouldScale ? 0.5 : 1,
+        child: Stack(
+          fit: StackFit.loose,
+          alignment: Alignment.center,
+          children: [
+            for (var i = 0; i < stories.length; i++) ...[
+              Transform.translate(
+                offset: Offset(i * -10, i.toDouble() * 9),
+                child: Container(
+                  height: 400,
+                  width: 320,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        stories[i],
+                      ),
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+List<String> stories = [
+  Assets.images.games.stack4.path,
+  Assets.images.games.stack2.path,
+  Assets.images.games.stack3.path,
+  Assets.images.games.stack1.path,
+];
+
+/// Widget that has stack card and switch them when a button is click
 class StoryLabel extends StatelessWidget {
   const StoryLabel({
     Key? key,
@@ -140,10 +565,16 @@ class StoryLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AutoSizeText(
           'WHAT IS SOS?',
-          style: TextStyles.body.copyWith(
+          style: TextStyles.header.copyWith(
+            fontSize: 15,
+            height: 1.5,
+            letterSpacing: 3,
+            wordSpacing: 1,
+            fontWeight: FontWeight.w700,
             color: Colors.white,
           ),
         ),
@@ -154,20 +585,36 @@ class StoryLabel extends StatelessWidget {
           'SOCIAL BATTLE\nROYALE GAME',
           style: TextStyles.header.copyWith(
             color: Colors.white,
+            fontSize: 50,
           ),
         ),
-        const Divider(
-          color: Colors.white,
-        ),
         SizedBox(
-          width: 400,
-          child: AutoSizeText(
-            "Each round, you and 15 other contestants compete to escape a deadly island filled with monsters. The trick is: three people can survive. Will you run solo or form friendships with others to escape?\n\nMaking the right decisions could be the difference between life and death.",
-            style: TextStyles.body.copyWith(
+          height: 10.0,
+          width: 500,
+          child: Center(
+            child: Container(
+              margin: const EdgeInsetsDirectional.only(start: 1.0, end: 1.0),
+              height: 2,
               color: Colors.white,
-              fontSize: 12,
             ),
-            textAlign: TextAlign.start,
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 20),
+          alignment: Alignment.centerRight,
+          width: 500,
+          child: UnconstrainedBox(
+            child: LimitedBox(
+              maxWidth: 350,
+              child: AutoSizeText(
+                "Each round, you and 15 other contestants compete to escape a deadly island filled with monsters. The trick is: three people can survive. Will you run solo or form friendships with others to escape?\n\nMaking the right decisions could be the difference between life and death.",
+                style: TextStyles.body.copyWith(
+                  color: Colors.white.withOpacity(0.8),
+                  wordSpacing: 1.0,
+                ),
+                textAlign: TextAlign.start,
+              ),
+            ),
           ),
         ),
       ],

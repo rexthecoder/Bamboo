@@ -145,6 +145,17 @@ class $AssetsImagesGen {
 class $AssetsImagesGamesGen {
   const $AssetsImagesGamesGen();
 
+  /// File path: assets/images/games/bg image 3.png
+  AssetGenImage get bgImage3 =>
+      const AssetGenImage('assets/images/games/bg image 3.png');
+
+  /// File path: assets/images/games/feat.png
+  AssetGenImage get feat => const AssetGenImage('assets/images/games/feat.png');
+
+  /// File path: assets/images/games/feature.png
+  AssetGenImage get feature =>
+      const AssetGenImage('assets/images/games/feature.png');
+
   /// File path: assets/images/games/hero.jpg
   AssetGenImage get heroJpg =>
       const AssetGenImage('assets/images/games/hero.jpg');
@@ -162,6 +173,14 @@ class $AssetsImagesGamesGen {
 
   /// File path: assets/images/games/logo.svg
   SvgGenImage get logoSvg => const SvgGenImage('assets/images/games/logo.svg');
+
+  /// File path: assets/images/games/requirement.jpg
+  AssetGenImage get requirement =>
+      const AssetGenImage('assets/images/games/requirement.jpg');
+
+  /// File path: assets/images/games/requirements.svg
+  SvgGenImage get requirements =>
+      const SvgGenImage('assets/images/games/requirements.svg');
 
   /// File path: assets/images/games/scrolldown.svg
   SvgGenImage get scrolldown =>
@@ -191,17 +210,25 @@ class $AssetsImagesGamesGen {
   SvgGenImage get steamicon =>
       const SvgGenImage('assets/images/games/steamicon.svg');
 
+  /// File path: assets/images/games/toy.png
+  AssetGenImage get toy => const AssetGenImage('assets/images/games/toy.png');
+
   /// File path: assets/images/games/xboxicon.svg
   SvgGenImage get xboxicon =>
       const SvgGenImage('assets/images/games/xboxicon.svg');
 
   /// List of all assets
   List<dynamic> get values => [
+        bgImage3,
+        feat,
+        feature,
         heroJpg,
         heroPng,
         heroSvg,
         logoPng,
         logoSvg,
+        requirement,
+        requirements,
         scrolldown,
         section2,
         stack1,
@@ -209,6 +236,7 @@ class $AssetsImagesGamesGen {
         stack3,
         stack4,
         steamicon,
+        toy,
         xboxicon
       ];
 }
