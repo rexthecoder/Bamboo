@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bamboo/bamboo.dart';
 import 'package:example/example/template/styles.dart';
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +16,168 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 7, 6, 6),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            HeroCard(),
-            Gallery(),
-            Feature(),
-            Requirements(),
-            NewLetter(),
-            Footer()
-          ],
+      body: Scrollbar(
+        thickness: 5,
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Column(
+            children: const [
+              HeroCard(),
+              Gallery(),
+              Feature(),
+              Requirements(),
+              NewLetter(),
+              Footer()
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+/// Fade in and Fade out overlay entry widget
+class FadeOverlayEntry extends StatefulWidget {
+  const FadeOverlayEntry({
+    super.key,
+    required this.child,
+    this.duration = const Duration(milliseconds: 300),
+    this.curve = Curves.easeInOut,
+  });
+
+  final Widget child;
+  final Duration duration;
+  final Curve curve;
+
+  @override
+  _FadeOverlayEntryState createState() => _FadeOverlayEntryState();
+}
+
+class _FadeOverlayEntryState extends State<FadeOverlayEntry>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  void _showOverlay(BuildContext context) async {
+    OverlayState? overlayState = Overlay.of(context);
+    late OverlayEntry overlay1;
+
+    overlay1 = OverlayEntry(
+      builder: (context) {
+        return GestureDetector(
+          onTap: () {
+            _controller.reverse();
+            Future.delayed(widget.duration, () {
+              overlay1.remove();
+            });
+            // overlay1.remove();
+          },
+          child: FadeTransition(
+            opacity: _animation,
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  /// Caculate a third of the screen width
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.black.withOpacity(0.5),
+                  child: const MobileNavigationItems(),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+
+    overlayState?.insertAll([
+      overlay1,
+    ]);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: widget.duration,
+    );
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: widget.curve,
+      ),
+    )
+      ..addListener(() {
+        setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _showOverlay(context);
+        _controller.forward();
+      },
+      child: widget.child,
+    );
+  }
+}
+
+class MobileNavigationItems extends StatelessWidget {
+  const MobileNavigationItems({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "HOME",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "ABOUT",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "ROADMAP",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "COLLECTION",
+            style: TextStyles.header,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const AutoSizeText(
+            "FAQS",
+            style: TextStyles.header,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -37,38 +190,49 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-         color: const Color(0xff080A0B),
-         padding: EdgeInsets.symmetric(
-          vertical: 30,
-         ),
+      color: const Color(0xff080A0B),
+      padding: const EdgeInsets.symmetric(
+        vertical: 30,
+      ),
       child: Column(
         children: [
-          const FooterNavBar(),
+          const BambooWidget(
+            mobile: SizedBox.shrink(),
+            desktop: FooterNavBar(),
+          ),
           const SizedBox(
             height: 20,
           ),
           const Divider(
             height: 10,
-            indent: 100,
             thickness: 1,
-            endIndent: 100,
             color: Color.fromARGB(39, 156, 155, 155),
           ),
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              AutoSizeText(
-                ' © 2018 Outpost Games, Inc. All Rights Reserved',
-                style: TextStyles.body,
-              ),
-              AutoSizeText(
-                'Privacy Policy | Terms of Services | Code of Conduct ',
-                style: TextStyles.body,
-              )
-            ],
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.1,
+              vertical: 10,
+            ),
+            child: Wrap(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              runSpacing: 20,
+
+              children: const [
+                AutoSizeText(
+                  ' © 2018 Outpost Games, Inc. All Rights Reserved',
+                  style: TextStyles.body,
+                  textAlign: TextAlign.center,
+                ),
+                AutoSizeText(
+                  'Privacy Policy | Terms of Services | Code of Conduct ',
+                  style: TextStyles.body,
+                  textAlign: TextAlign.center,
+                )
+              ],
+            ),
           ),
         ],
       ),
@@ -119,14 +283,31 @@ class NewLetter extends StatelessWidget {
     return Container(
       height: 750,
       width: double.infinity,
-      color: const Color(0xff080A0B),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Assets.images.games.toy.image(
-            height: 600,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xff080A0B),
+        image: DecorationImage(
+          opacity: 0.5,
+          image: AssetImage(
+            Assets.images.games.toy.path,
           ),
+        ),
+      ),
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          // Assets.images.games.toy.image(
+          //   height: Bamboo.number(
+          //     context: context,
+          //     mobile: 100,
+          //     desktop: 600,
+          //   ),
+          // ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,13 +349,19 @@ class NewLetter extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Wrap(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
+                runSpacing: 20,
                 children: [
                   SizedBox(
-                    width: 300,
-                    height: 200,
+                    width: Bamboo.number(
+                      context: context,
+                      mobile: double.infinity,
+                      desktop: 300,
+                    ),
+                    // height: 200,
                     child: TextField(
                       cursorColor: Colors.white,
                       style: TextStyles.body.copyWith(
@@ -184,7 +371,7 @@ class NewLetter extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'rexthedev@gmail.com',
                         hintStyle: TextStyles.body.copyWith(
-                        color: const Color(0xffFFB548),
+                          color: const Color(0xffFFB548),
                           fontSize: 14,
                         ),
                         border: OutlineInputBorder(
@@ -196,19 +383,23 @@ class NewLetter extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  // const SizedBox(
+                  //   width: 10,
+                  //   height: 10,
+                  // ),
                   AnimatedButton(
-                    height: 45,
-                    width: 150,
+                    height: 50,
+                    width: Bamboo.number(
+                      context: context,
+                      mobile: double.infinity,
+                      desktop: 150,
+                    ),
                     borderColor: Colors.white,
                     color: const Color(0xffFFB548),
                     onPressed: () {},
                     child: const AutoSizeText(
                       'Subscribe now',
                       style: TextStyle(
-                        fontSize: 10,
                         height: 1.5,
                         fontWeight: FontWeight.w700,
                         color: Color(0xff1A1917),
@@ -239,7 +430,7 @@ class Requirements extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            Assets.images.games.requirement.path,
+            Assets.images.games.requirementPng.path,
           ),
           fit: BoxFit.cover,
         ),
@@ -274,10 +465,16 @@ class Requirements extends StatelessWidget {
           Container(
             width: double.infinity,
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.symmetric(horizontal: 50),
+            padding: EdgeInsets.symmetric(
+              horizontal: Bamboo.number(
+                context: context,
+                mobile: 0,
+                desktop: 50,
+              ),
+            ),
             child: SvgPicture.asset(
               Assets.images.games.requirements.path,
-              fit: BoxFit.scaleDown,
+              // fit: BoxFit.scaleDown,
             ),
           )
         ],
@@ -302,6 +499,7 @@ class Feature extends StatelessWidget {
           image: AssetImage(
             Assets.images.games.feat.path,
           ),
+          opacity: 0.6,
           fit: BoxFit.cover,
         ),
       ),
@@ -467,23 +665,38 @@ class Gallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 750,
+      height: Bamboo.number(
+        context: context,
+        mobile: 900,
+        desktop: 750,
+      ),
       width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(
-            Assets.images.games.section2.path,
-          ),
+          image: AssetImage(Bamboo.value(
+            context: context,
+            mobile: Assets.images.games.gallerymobile.path,
+            desktop: Assets.images.games.section2.path,
+          )),
           fit: BoxFit.fill,
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        runSpacing: 10,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
+          SizedBox(
+            width: 100,
+            height: 20,
+          ),
           StoryLabel(),
           SizedBox(
             width: 100,
+            height: 20,
           ),
           ImageStack()
         ],
@@ -635,7 +848,11 @@ class HeroCard extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            Assets.images.games.heroPng.path,
+            Bamboo.value(
+              context: context,
+              mobile: Assets.images.games.heromobile.path,
+              desktop: Assets.images.games.heroPng.path,
+            ),
           ),
           fit: BoxFit.fill,
         ),
@@ -644,9 +861,32 @@ class HeroCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(11.0),
-            child: NavBar(),
+          BambooWidget(
+            mobile: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 80,
+                horizontal: 20,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    Assets.images.games.logoPng.path,
+                    height: 50,
+                  ),
+                  FadeOverlayEntry(
+              
+                    child: SvgPicture.asset(
+                      Assets.images.games.menu.path,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            desktop: const Padding(
+              padding: EdgeInsets.all(11.0),
+              child: NavBar(),
+            ),
           ),
           const HeroLabel(),
           Column(
@@ -720,7 +960,11 @@ class HeroLabel extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyles.header.copyWith(
             height: 1,
-            fontSize: 80,
+            fontSize: Bamboo.number(
+              context: context,
+              mobile: 60,
+              desktop: 80,
+            ),
           ),
         ),
         AutoSizeText(
@@ -739,7 +983,12 @@ class HeroLabel extends StatelessWidget {
           height: 20,
         ),
         AnimatedButton(
-          height: 45,
+          height: Bamboo.number(
+            context: context,
+            mobile: 60,
+            desktop: 45,
+          ),
+          width: 250,
           borderColor: Colors.white,
           color: const Color(0xffFFB548),
           onPressed: () {},
@@ -749,7 +998,6 @@ class HeroLabel extends StatelessWidget {
               const AutoSizeText(
                 'Buy Now on Steam',
                 style: TextStyle(
-                  fontSize: 10,
                   height: 1.5,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1A1917),
@@ -765,7 +1013,6 @@ class HeroLabel extends StatelessWidget {
               AutoSizeText(
                 '\$14.99m',
                 style: TextStyles.body1.copyWith(
-                  fontSize: 12,
                   height: 1.5,
                   wordSpacing: 1,
                   color: const Color(0xff1A1917),

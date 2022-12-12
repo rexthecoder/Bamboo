@@ -145,16 +145,20 @@ class $AssetsImagesGen {
 class $AssetsImagesGamesGen {
   const $AssetsImagesGamesGen();
 
-  /// File path: assets/images/games/bg image 3.png
-  AssetGenImage get bgImage3 =>
-      const AssetGenImage('assets/images/games/bg image 3.png');
-
   /// File path: assets/images/games/feat.png
   AssetGenImage get feat => const AssetGenImage('assets/images/games/feat.png');
 
   /// File path: assets/images/games/feature.png
   AssetGenImage get feature =>
       const AssetGenImage('assets/images/games/feature.png');
+
+  /// File path: assets/images/games/featuresmobile.png
+  AssetGenImage get featuresmobile =>
+      const AssetGenImage('assets/images/games/featuresmobile.png');
+
+  /// File path: assets/images/games/gallerymobile.png
+  AssetGenImage get gallerymobile =>
+      const AssetGenImage('assets/images/games/gallerymobile.png');
 
   /// File path: assets/images/games/hero.jpg
   AssetGenImage get heroJpg =>
@@ -167,6 +171,10 @@ class $AssetsImagesGamesGen {
   /// File path: assets/images/games/hero.svg
   SvgGenImage get heroSvg => const SvgGenImage('assets/images/games/hero.svg');
 
+  /// File path: assets/images/games/heromobile.png
+  AssetGenImage get heromobile =>
+      const AssetGenImage('assets/images/games/heromobile.png');
+
   /// File path: assets/images/games/logo.png
   AssetGenImage get logoPng =>
       const AssetGenImage('assets/images/games/logo.png');
@@ -174,9 +182,16 @@ class $AssetsImagesGamesGen {
   /// File path: assets/images/games/logo.svg
   SvgGenImage get logoSvg => const SvgGenImage('assets/images/games/logo.svg');
 
+  /// File path: assets/images/games/menu.svg
+  SvgGenImage get menu => const SvgGenImage('assets/images/games/menu.svg');
+
   /// File path: assets/images/games/requirement.jpg
-  AssetGenImage get requirement =>
+  AssetGenImage get requirementJpg =>
       const AssetGenImage('assets/images/games/requirement.jpg');
+
+  /// File path: assets/images/games/requirement.png
+  AssetGenImage get requirementPng =>
+      const AssetGenImage('assets/images/games/requirement.png');
 
   /// File path: assets/images/games/requirements.svg
   SvgGenImage get requirements =>
@@ -219,15 +234,19 @@ class $AssetsImagesGamesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-        bgImage3,
         feat,
         feature,
+        featuresmobile,
+        gallerymobile,
         heroJpg,
         heroPng,
         heroSvg,
+        heromobile,
         logoPng,
         logoSvg,
-        requirement,
+        menu,
+        requirementJpg,
+        requirementPng,
         requirements,
         scrolldown,
         section2,
