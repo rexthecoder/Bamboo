@@ -18,22 +18,28 @@ extension ResponsiveUtil on BuildContext {
   bool get isLandscape => orientation == Orientation.landscape;
 
   /// Check if screen is mobile using breakpoint both landscape and portrait
-  bool get isMobile => width <= breakpoint!.mobile;
+  bool get isMobile => shortestSide<= breakpoint!.mobile;
 
   /// Check if screen is tablet
   bool get isTablet =>
-      breakpoint!.mobile < width && width <= breakpoint!.tablet;
+      breakpoint!.mobile < shortestSide&& shortestSide<= breakpoint!.tablet;
 
   /// Check if screen is desktop
-  bool get isDesktop => breakpoint!.tablet < width && width <= breakpoint!.desktop;
+  bool get isDesktop => breakpoint!.tablet < shortestSide&& shortestSide<= breakpoint!.desktop;
 
   /// Extra large
-  bool get isLarge => breakpoint!.desktop < width; 
+  bool get isLarge => breakpoint!.desktop < shortestSide; 
 
-  /// Return width based on orietation
+  /// Return shortestSidebased on orietation
+  double get shortestSide => MediaQuery.of(this).size.shortestSide;
+
+  /// Return longestSidebased on orietation
+  double get longestSide => MediaQuery.of(this).size.longestSide;
+
+  // Returns the current width 
   double get width => MediaQuery.of(this).size.width;
 
-  /// Return height based on orietation
+  // Returns the current height
   double get height => MediaQuery.of(this).size.height;
 }
 
