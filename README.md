@@ -22,7 +22,7 @@ In your library add the following import:
 import 'package:bamboo/bamboo.dart';
 ```
 
-Wrap your MaterialApp or root widget with our inherited widget.By defualt we have a default breakpoint but you can define your own breakpoint using our inherited widget.
+Wrap your MaterialApp or root widget with our inherited widget. By default we have a default breakpoint but you can define your own breakpoint using our inherited widget.
 
 ```dart
     BambooBreakPoint(
