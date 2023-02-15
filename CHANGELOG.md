@@ -14,3 +14,7 @@
 ## 1.0.2
 * Updated configuration
 * Add example 
+
+## 1.0.3
+* Fixed some reported error
+* Updated Flutter version
