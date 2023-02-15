@@ -94,9 +94,9 @@ class Bamboo<T> {
     } else if (context.isTablet) {
       return _convertUnit(tablet ?? mobile, unit);
     } else if (context.isDesktop) {
-      return _convertUnit(desktop ?? mobile, unit);
+      return _convertUnit(desktop ?? tablet ?? mobile, unit);
     } else if (context.isLarge) {
-      return _convertUnit(large ?? mobile, unit);
+      return _convertUnit(large ?? desktop ?? tablet ?? mobile, unit);
     } else {
       return _convertUnit(mobile, unit);
     }
@@ -109,7 +109,7 @@ class Bamboo<T> {
     if (value is num) {
       return _unitConversion(unitValue, value);
     }
-    return value!;
+    return value;
   }
 
   ///  ALlow us to pass only num values for a proper conversion
