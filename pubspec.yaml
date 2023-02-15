@@ -1,6 +1,6 @@
 name: bamboo
 description: Utilities that make it easy and fast to build adaptive apps for mobile, web, and beyond with Flutter.
-version: 1.0.2
+version: 1.0.3
 homepage: https://flutter.dev/custom-fonts/
 
 environment:
